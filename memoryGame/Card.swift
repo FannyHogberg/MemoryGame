@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import AVFoundation
 
 class Card {
     
@@ -16,7 +15,6 @@ class Card {
     let image : UIImage
     let backImage = UIImage(named: "cardBack")
     var isFlipped : Bool = false
-    var audioPlayer : AVAudioPlayer!
     let sound : URL
     var xCoordinate = 0
     var yCoordinate = 0
@@ -38,44 +36,8 @@ class Card {
         height = imageHeight
     }
     
-    
-    func playSound(){
-        
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: sound)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
-        
-    }
-    
-    
-    func flipToShowImage(cardButton: UIButton) {
-        if isFlipped == false{
-            cardButton.setImage(image, for: .normal)
-            UIView.transition(with: cardButton, duration: 0.5, options: .transitionFlipFromLeft, animations: nil, completion: nil)
-            isFlipped = true
-            
-        }
-        
-        
-    }
-    
-
-    
-    func flipToHide(cardButton: UIButton) {
-        
-        if isFlipped == true {
-            cardButton.setImage(backImage, for: .normal)
-            UIView.transition(with: cardButton, duration: 0.5, options: .transitionFlipFromRight, animations: nil, completion: nil)
-            
-            self.isFlipped = false
-            
-            
-        }
-        
+    func setIsFlipped(status: Bool){
+        isFlipped = status
     }
     
     

@@ -124,7 +124,6 @@ class CardBank{
                     print("counter ================ \(counter)")
                     
                     newCoordinates = randomCoordinates(level: levelInGame, widthOfView: viewWidth, heightOfView: viewHeight)
-                    print(newCoordinates)
                 }
                 
                 coordinatesArray.append(newCoordinates)
@@ -142,11 +141,7 @@ class CardBank{
             
             listOfCards[i].xCoordinate = arrayOfCoordinates[i].x
             listOfCards[i].yCoordinate = arrayOfCoordinates[i].y
-            
-            
-            print(listOfCards[i].xCoordinate)
-            print(listOfCards[i].yCoordinate)
-            
+
         }
         
     }
@@ -155,16 +150,16 @@ class CardBank{
     
     func randomXcoordinate(imageWidth: Int, viewWidth : Int) -> Int {
         
-        let xMaxValue = viewWidth - 40 - Int(imageWidth)
-        let randomNumber = Int(arc4random_uniform(UInt32(Int(xMaxValue)))) + 20
+        let xMaxValue = viewWidth - Int((Double(viewWidth) * 0.10)) - Int(imageWidth)
+        let randomNumber = Int(arc4random_uniform(UInt32(Int(xMaxValue)))) + Int((Double(viewWidth) * 0.10))
         return randomNumber
         
     }
     
     func randomYcoordinate(imageHeight: Int, viewHeight : Int) -> Int {
         
-        let yMaxValue = viewHeight - 40 - imageHeight
-        let randomNumber = Int(arc4random_uniform(UInt32(Int(yMaxValue)))) + 20
+        let yMaxValue = viewHeight - Int((Double(viewHeight) * 0.35)) - imageHeight
+        let randomNumber = Int(arc4random_uniform(UInt32(Int(yMaxValue)))) + Int((Double(viewHeight) * 0.15))
         return randomNumber
         
     }

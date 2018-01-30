@@ -29,8 +29,8 @@ class Level{
         viewHeight = heightOfView
         viewWidth =  widthOfView
         
-        cardWidth = Int(viewWidth * 0.3)
-        cardHeight = Int(viewWidth * 0.3)
+        cardWidth = Int(viewWidth * 0.2)
+        cardHeight = Int(viewWidth * 0.2)
     }
 
     

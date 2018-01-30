@@ -21,7 +21,7 @@
 		4DAA1CE620152E78002DB565 /* fart2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4DAA1CE120152E78002DB565 /* fart2.mp3 */; };
 		4DAA1CE720152E78002DB565 /* fart3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4DAA1CE220152E78002DB565 /* fart3.mp3 */; };
 		4DAA1CE9201533D1002DB565 /* fart5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4DAA1CE8201533D1002DB565 /* fart5.mp3 */; };
-		4DE8DABB201F28FC00B89717 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE8DABA201F28FC00B89717 /* Assets.xcassets */; };
+		4DF18EAD201FC86C0051392E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DF18EAC201FC86C0051392E /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +41,7 @@
 		4DAA1CE120152E78002DB565 /* fart2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart2.mp3; sourceTree = "<group>"; };
 		4DAA1CE220152E78002DB565 /* fart3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart3.mp3; sourceTree = "<group>"; };
 		4DAA1CE8201533D1002DB565 /* fart5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart5.mp3; sourceTree = "<group>"; };
-		4DE8DABA201F28FC00B89717 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4DF18EAC201FC86C0051392E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,6 @@
 		4D1EABF02004D2CD0004F8EA /* memoryGame */ = {
 			isa = PBXGroup;
 			children = (
-				4DE8DABA201F28FC00B89717 /* Assets.xcassets */,
 				4DAA1CDD20152E10002DB565 /* Sound files */,
 				4D1EABF12004D2CD0004F8EA /* AppDelegate.swift */,
 				4D8C207E2015DB1600C1A777 /* StartViewController.swift */,
@@ -85,6 +84,7 @@
 				4D1EABF52004D2CD0004F8EA /* Main.storyboard */,
 				4D1EABFA2004D2CD0004F8EA /* LaunchScreen.storyboard */,
 				4D1EABFD2004D2CD0004F8EA /* Info.plist */,
+				4DF18EAC201FC86C0051392E /* Assets.xcassets */,
 			);
 			path = memoryGame;
 			sourceTree = "<group>";
@@ -165,10 +165,10 @@
 				4DAA1CE9201533D1002DB565 /* fart5.mp3 in Resources */,
 				4D8C20812015F89D00C1A777 /* nextLevel.mp3 in Resources */,
 				4D1EABFC2004D2CD0004F8EA /* LaunchScreen.storyboard in Resources */,
+				4DF18EAD201FC86C0051392E /* Assets.xcassets in Resources */,
 				4DAA1CE520152E78002DB565 /* fart1.mp3 in Resources */,
 				4DAA1CE620152E78002DB565 /* fart2.mp3 in Resources */,
 				4D1EABF72004D2CD0004F8EA /* Main.storyboard in Resources */,
-				4DE8DABB201F28FC00B89717 /* Assets.xcassets in Resources */,
 				4DAA1CE720152E78002DB565 /* fart3.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
