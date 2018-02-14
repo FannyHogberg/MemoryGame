@@ -14,12 +14,12 @@ class Card {
     let id : String
     let image : UIImage
     let backImage = UIImage(named: "cardBack")
-    var isFlipped : Bool = false
     let sound : URL
-    var xCoordinate = 0
-    var yCoordinate = 0
-    var width = 0
-    var height = 0
+    var isFlipped : Bool = false
+//    var xCoordinate = 0
+//    var yCoordinate = 0
+//    var width = 0
+//    var height = 0
     
     
     init(cardId: String, imageName: String, soundName: String) {
@@ -31,19 +31,19 @@ class Card {
     
     
     
-    func setSize(imagewidth: Int, imageHeight: Int){
-        width = imagewidth
-        height = imageHeight
-    }
+//    func setSize(imagewidth: Int, imageHeight: Int){
+//        width = imagewidth
+//        height = imageHeight
+//    }
     
     func setIsFlipped(status: Bool){
         isFlipped = status
     }
     
     
-    func setCoordinates(x: Int, y: Int){
-    self.xCoordinate = x
-    self.yCoordinate = y
-}
+//    func setCoordinates(x: Int, y: Int){
+//    self.xCoordinate = x
+//    self.yCoordinate = y
+//}
     
 }

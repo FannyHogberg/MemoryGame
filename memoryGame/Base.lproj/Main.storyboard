@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VmT-fr-p6B">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,10 +25,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background3" translatesAutoresizingMaskIntoConstraints="NO" id="ICe-jN-pNB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ICe-jN-pNB">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bajsbildStart" translatesAutoresizingMaskIntoConstraints="NO" id="4pu-mN-n6o">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="card6" translatesAutoresizingMaskIntoConstraints="NO" id="4pu-mN-n6o">
                                 <rect key="frame" x="54" y="255" width="307" height="226"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -56,9 +58,13 @@
                                     <action selector="goToGame:" destination="VmT-fr-p6B" eventType="touchUpInside" id="lc3-mp-Rzg"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="settings" translatesAutoresizingMaskIntoConstraints="NO" id="0E6-Ie-Xn3">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="settings" translatesAutoresizingMaskIntoConstraints="NO" id="0E6-Ie-Xn3">
                                 <rect key="frame" x="331" y="40" width="63" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="iRq-Ow-7j9" appends="YES" id="zE9-a9-2KW"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -75,37 +81,118 @@
                         <outlet property="startImage" destination="4pu-mN-n6o" id="v1A-qq-UtR"/>
                         <outlet property="text" destination="2Pz-yh-mKe" id="CEo-lL-uoz"/>
                         <outlet property="textTitle" destination="967-Lr-5Oq" id="EYx-xF-8Ri"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="startGame" id="nfN-q9-dzs"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="startGame" modalTransitionStyle="crossDissolve" id="nfN-q9-dzs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b3i-Cz-Izv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iRq-Ow-7j9" userLabel="settings Tap">
+                    <connections>
+                        <segue destination="sEu-LD-9GA" kind="presentation" modalTransitionStyle="crossDissolve" id="qoQ-v7-YqL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-1104" y="131"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="A9b-zH-3k0">
             <objects>
-                <viewController id="sEu-LD-9GA" sceneMemberID="viewController">
+                <viewController id="sEu-LD-9GA" customClass="SettingsViewController" customModule="memoryGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xny-eG-Gvz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background3" translatesAutoresizingMaskIntoConstraints="NO" id="2D4-Nf-aS1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="2D4-Nf-aS1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sound" translatesAutoresizingMaskIntoConstraints="NO" id="AG2-9I-00U">
-                                <rect key="frame" x="87" y="304" width="240" height="128"/>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sound" translatesAutoresizingMaskIntoConstraints="NO" id="AG2-9I-00U">
+                                <rect key="frame" x="263" y="213" width="114" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="PvG-kx-qkH" appends="YES" id="ujr-oz-VGh"/>
+                                </connections>
+                            </imageView>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sound" translatesAutoresizingMaskIntoConstraints="NO" id="Th6-xM-AUF">
+                                <rect key="frame" x="263" y="315" width="114" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="yUw-S0-VRn" appends="YES" id="7OO-1q-0fs"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bakgrundsmusik" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIq-Op-rQw">
+                                <rect key="frame" x="60" y="200" width="257" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="FYZ-ye-Og0" appends="YES" id="64S-D3-f1b"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pruttar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stc-LX-HGO">
+                                <rect key="frame" x="60" y="301" width="257" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ei1-3Y-cAO" appends="YES" id="6Ig-dh-9cl"/>
+                                </connections>
+                            </label>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="6uR-OK-5b7">
+                                <rect key="frame" x="29" y="31" width="48" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="n0M-50-rDU" appends="YES" id="jev-S4-Trm"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2D4-Nf-aS1" firstAttribute="leading" secondItem="nCc-tX-OGA" secondAttribute="leading" id="3zE-40-d6G"/>
+                            <constraint firstItem="2D4-Nf-aS1" firstAttribute="top" secondItem="Xny-eG-Gvz" secondAttribute="top" id="614-TH-Eb5"/>
+                            <constraint firstItem="2D4-Nf-aS1" firstAttribute="trailing" secondItem="nCc-tX-OGA" secondAttribute="trailing" id="lUM-pv-rez"/>
+                            <constraint firstItem="2D4-Nf-aS1" firstAttribute="bottom" secondItem="nCc-tX-OGA" secondAttribute="bottom" id="u7o-t0-hyg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nCc-tX-OGA"/>
                     </view>
+                    <connections>
+                        <outlet property="audioButton" destination="Th6-xM-AUF" id="S3f-Bm-aho"/>
+                        <outlet property="musicButton" destination="AG2-9I-00U" id="aEb-pg-DIX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G1y-mS-gNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="n0M-50-rDU" userLabel="Go to Home Tap Recognizer">
+                    <connections>
+                        <segue destination="VmT-fr-p6B" kind="presentation" modalTransitionStyle="crossDissolve" id="oHN-rd-WdK"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="PvG-kx-qkH" userLabel="Background Music BTN Recognizer">
+                    <connections>
+                        <action selector="settingsForMusic:" destination="sEu-LD-9GA" id="aFS-aO-VRs"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="FYZ-ye-Og0" userLabel="Background Music LABEL Recognizer">
+                    <connections>
+                        <action selector="settingsForMusic:" destination="sEu-LD-9GA" id="fAo-nh-eef"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Ei1-3Y-cAO" userLabel="Audio LABEL Tap Recognizer">
+                    <connections>
+                        <action selector="settingsForAudio:" destination="sEu-LD-9GA" id="pi7-qy-LgA"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="yUw-S0-VRn" userLabel="Audio BTN Tap Recognizer">
+                    <connections>
+                        <action selector="settingsForAudio:" destination="sEu-LD-9GA" id="Del-EP-Mml"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1090" y="822"/>
+            <point key="canvasLocation" x="-1104.3478260869565" y="906.52173913043487"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -116,53 +203,371 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Next Level" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJa-ag-WZ2">
-                                <rect key="frame" x="98.5" y="249.5" width="218.5" height="17.5"/>
+                                <rect key="frame" x="73" y="281" width="268" height="173.5"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
-                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="16"/>
+                                <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background4" translatesAutoresizingMaskIntoConstraints="NO" id="WYT-Nk-ICJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="WYT-Nk-ICJ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="dj8-ut-hPI">
-                                <rect key="frame" x="20" y="20" width="48" height="47"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7b-OV-t89" userLabel="level1">
+                                <rect key="frame" x="41.333333333333343" y="147.33333333333337" width="331.33333333333326" height="368"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpN-Ha-KNN">
+                                        <rect key="frame" x="8" y="9" width="148" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c89-nt-q89"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zno-dO-gyE">
+                                        <rect key="frame" x="175" y="8" width="147.5" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oyt-3e-ako"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbM-HR-aKL">
+                                        <rect key="frame" x="8" y="231" width="148" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UkU-CW-pro"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="4" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEJ-ze-Tth">
+                                        <rect key="frame" x="175" y="242" width="148" height="126"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1gS-dr-a9M"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tee-Bp-Vxy" userLabel="level2">
+                                <rect key="frame" x="41.333333333333343" y="147.33333333333337" width="331.33333333333326" height="368"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vre-vC-PwQ">
+                                        <rect key="frame" x="19" y="-35" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="boa-jM-627"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGr-7B-esF">
+                                        <rect key="frame" x="191" y="-35" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rqh-NW-Ed8"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzN-rb-N5d">
+                                        <rect key="frame" x="19" y="85" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qrV-PT-MTG"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="4" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phJ-SY-eF3">
+                                        <rect key="frame" x="191" y="97" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MHb-US-RsI"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="5" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMJ-0o-pzo">
+                                        <rect key="frame" x="19" y="248" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DnT-2P-blF"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="6" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwC-ip-1jA">
+                                        <rect key="frame" x="189" y="248" width="120" height="120"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S65-m8-u0B"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9lH-Pf-49A" userLabel="level3">
+                                <rect key="frame" x="41.333333333333343" y="147.33333333333337" width="331.33333333333326" height="368"/>
+                                <subviews>
+                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pp4-SW-3ag">
+                                        <rect key="frame" x="52" y="-35" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KC6-xx-FTk"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zud-sw-v08">
+                                        <rect key="frame" x="172" y="-35" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xOZ-M4-jR6"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qod-lH-TbO">
+                                        <rect key="frame" x="-5" y="73" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pi9-mS-Sqi"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="4" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIZ-Wi-K27">
+                                        <rect key="frame" x="110" y="73" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7p-AY-ted"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="5" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFR-3H-O3B">
+                                        <rect key="frame" x="236" y="73" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vff-P0-ab4"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="6" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8U-Gd-0zd">
+                                        <rect key="frame" x="-5" y="195" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F7F-jn-4gG"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="7" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fh5-6L-V6O">
+                                        <rect key="frame" x="110" y="185" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FFw-6O-gid"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="8" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="st2-FV-s3o">
+                                        <rect key="frame" x="236" y="185" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WJw-PC-DEw"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="9" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMt-lW-SXT">
+                                        <rect key="frame" x="52" y="303" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yoz-xh-ZLe"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" tag="10" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSC-BG-and">
+                                        <rect key="frame" x="167" y="303" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="cardBack"/>
+                                        <connections>
+                                            <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u03-BM-frg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vxp-hn-xrN" userLabel="ToiletView">
+                                <rect key="frame" x="0.0" y="549.66666666666663" width="186.33333333333334" height="186.33333333333337"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toiletTop" translatesAutoresizingMaskIntoConstraints="NO" id="Pec-sc-1iu">
+                                        <rect key="frame" x="0.0" y="1" width="186.33333333333334" height="92.666666666666671"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                        </accessibility>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toiletBottom" translatesAutoresizingMaskIntoConstraints="NO" id="Bnl-79-AUu">
+                                        <rect key="frame" x="0.0" y="93.666666666666742" width="186.33333333333334" height="92.666666666666686"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                        </accessibility>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xK-zg-fxh" userLabel="Toilet Lid view">
+                                        <rect key="frame" x="0.0" y="0.0" width="147.33333333333334" height="186.33333333333334"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toiletLid" translatesAutoresizingMaskIntoConstraints="NO" id="bdd-9o-CYJ">
+                                                <rect key="frame" x="0.0" y="1" width="186.33333333333334" height="92.666666666666671"/>
+                                                <accessibility key="accessibilityConfiguration">
+                                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                                </accessibility>
+                                            </imageView>
+                                        </subviews>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
+                                    </view>
+                                </subviews>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstItem="bdd-9o-CYJ" firstAttribute="width" secondItem="Pec-sc-1iu" secondAttribute="width" id="6ab-45-f9t"/>
+                                    <constraint firstItem="bdd-9o-CYJ" firstAttribute="leading" secondItem="vxp-hn-xrN" secondAttribute="leading" id="GfM-u0-UhG"/>
+                                    <constraint firstItem="Pec-sc-1iu" firstAttribute="leading" secondItem="vxp-hn-xrN" secondAttribute="leading" id="Hly-GS-PZw"/>
+                                    <constraint firstItem="Bnl-79-AUu" firstAttribute="height" secondItem="vxp-hn-xrN" secondAttribute="height" multiplier="0.5" id="OQX-Gt-N6H"/>
+                                    <constraint firstItem="9xK-zg-fxh" firstAttribute="leading" secondItem="vxp-hn-xrN" secondAttribute="leading" id="PwY-dk-Lu1"/>
+                                    <constraint firstItem="Bnl-79-AUu" firstAttribute="leading" secondItem="vxp-hn-xrN" secondAttribute="leading" id="U1i-qU-Kxp"/>
+                                    <constraint firstItem="Bnl-79-AUu" firstAttribute="width" secondItem="vxp-hn-xrN" secondAttribute="width" id="Vka-oG-rRU"/>
+                                    <constraint firstItem="Bnl-79-AUu" firstAttribute="top" secondItem="Pec-sc-1iu" secondAttribute="bottom" id="XuQ-Vs-mtz"/>
+                                    <constraint firstAttribute="width" secondItem="vxp-hn-xrN" secondAttribute="height" multiplier="1:1" id="cRM-mH-u4R"/>
+                                    <constraint firstAttribute="bottom" secondItem="Bnl-79-AUu" secondAttribute="bottom" id="ctV-EX-mbG"/>
+                                    <constraint firstItem="9xK-zg-fxh" firstAttribute="width" secondItem="vxp-hn-xrN" secondAttribute="width" multiplier="0.79" id="hm3-Ax-vVf"/>
+                                    <constraint firstItem="Bnl-79-AUu" firstAttribute="top" secondItem="bdd-9o-CYJ" secondAttribute="bottom" id="k7B-cI-c8i"/>
+                                    <constraint firstItem="9xK-zg-fxh" firstAttribute="height" secondItem="vxp-hn-xrN" secondAttribute="height" id="mYy-8v-o7u"/>
+                                    <constraint firstItem="bdd-9o-CYJ" firstAttribute="height" secondItem="Pec-sc-1iu" secondAttribute="height" id="qwc-aI-Bic"/>
+                                    <constraint firstAttribute="bottom" secondItem="9xK-zg-fxh" secondAttribute="bottom" id="rz5-so-Vhn"/>
+                                    <constraint firstItem="Pec-sc-1iu" firstAttribute="width" secondItem="Bnl-79-AUu" secondAttribute="width" id="saX-Qi-mu2"/>
+                                    <constraint firstItem="Pec-sc-1iu" firstAttribute="height" secondItem="Bnl-79-AUu" secondAttribute="height" id="u0f-7a-rUc"/>
+                                </constraints>
+                            </view>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4It-01-Fzx" userLabel="endOfGameViewv">
+                                <rect key="frame" x="6400" y="202" width="299" height="333"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="c5s-Qd-ynz">
+                                    <rect key="frame" x="0.0" y="0.0" width="299" height="333"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="playAgain" translatesAutoresizingMaskIntoConstraints="NO" id="se4-qf-Qvd">
+                                            <rect key="frame" x="105" y="216" width="88" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXw-Oa-AWs">
+                                            <rect key="frame" x="8" y="42" width="283" height="150"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="light"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="dj8-ut-hPI">
+                                <rect key="frame" x="16" y="20" width="48" height="47"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="PRt-Sb-4AQ"/>
+                                    <constraint firstAttribute="height" constant="47" id="g0P-FK-xaH"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="1vZ-ZC-Lbx" appends="YES" id="GO9-Rb-yi5"/>
+                                </connections>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="toiletimage1" translatesAutoresizingMaskIntoConstraints="NO" id="QKw-c7-6iO">
-                                <rect key="frame" x="0.0" y="51" width="414" height="685"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="axW-jO-guN">
-                                <rect key="frame" x="59" y="588" width="142" height="74"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pipe" translatesAutoresizingMaskIntoConstraints="NO" id="HLF-zw-9pb">
+                                <rect key="frame" x="-601.66666666666663" y="20" width="556.66666666666663" height="147.33333333333334"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HLF-zw-9pb" secondAttribute="height" multiplier="185:49" id="VGe-nR-j41"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="dj8-ut-hPI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="14o-CA-QIg"/>
+                            <constraint firstItem="Tee-Bp-Vxy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.9" id="3ap-3E-Xcf"/>
+                            <constraint firstItem="HLF-zw-9pb" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.2" id="4Ll-wg-mBr"/>
+                            <constraint firstItem="9lH-Pf-49A" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="7Fu-bk-4ob"/>
+                            <constraint firstItem="9lH-Pf-49A" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="9UW-wo-a2B"/>
+                            <constraint firstItem="9lH-Pf-49A" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.9" id="Bcb-xK-MAF"/>
+                            <constraint firstItem="Tee-Bp-Vxy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E5T-Xd-uX0"/>
+                            <constraint firstItem="r7b-OV-t89" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.9" id="HRY-3n-1St"/>
+                            <constraint firstItem="9lH-Pf-49A" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I3g-sY-e5Z"/>
+                            <constraint firstItem="r7b-OV-t89" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="Ilt-FJ-u4S"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WYT-Nk-ICJ" secondAttribute="bottom" id="MLb-RT-6G4"/>
+                            <constraint firstItem="r7b-OV-t89" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nj3-BP-Q35"/>
+                            <constraint firstItem="HLF-zw-9pb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QiC-YD-uid"/>
+                            <constraint firstItem="WYT-Nk-ICJ" firstAttribute="leading" secondItem="HLF-zw-9pb" secondAttribute="trailing" constant="45" id="T90-ad-HXA"/>
+                            <constraint firstItem="WYT-Nk-ICJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="X7R-UC-vw8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="WYT-Nk-ICJ" secondAttribute="top" constant="20" id="YDe-QB-Aqx"/>
+                            <constraint firstItem="vxp-hn-xrN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZVU-JQ-Y0L"/>
+                            <constraint firstItem="Tee-Bp-Vxy" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="c7o-XT-y6n"/>
+                            <constraint firstItem="dj8-ut-hPI" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="m4n-Nb-6XO"/>
+                            <constraint firstItem="r7b-OV-t89" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="qTr-9E-Agg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vxp-hn-xrN" secondAttribute="bottom" id="rid-Zg-EdG"/>
+                            <constraint firstItem="vxp-hn-xrN" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.45" id="s79-RO-M2t"/>
+                            <constraint firstItem="Tee-Bp-Vxy" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="tbo-i0-Rt1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WYT-Nk-ICJ" secondAttribute="trailing" id="y4K-h4-PfZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="endOfGameLabel" destination="EXw-Oa-AWs" id="JYW-xr-RTT"/>
+                        <outlet property="endOfGameView" destination="4It-01-Fzx" id="wKe-HU-QfX"/>
+                        <outlet property="level1" destination="r7b-OV-t89" id="str-hg-ec0"/>
+                        <outlet property="level2" destination="Tee-Bp-Vxy" id="34H-Ab-8Ao"/>
+                        <outlet property="level3" destination="9lH-Pf-49A" id="LJt-jI-y92"/>
                         <outlet property="nextLevelText" destination="gJa-ag-WZ2" id="gd3-50-tsd"/>
-                        <outlet property="toiletAnimate" destination="QKw-c7-6iO" id="dit-eJ-mQQ"/>
-                        <outlet property="toiletLid" destination="axW-jO-guN" id="Waw-1m-dd0"/>
+                        <outlet property="pipe" destination="HLF-zw-9pb" id="g0X-4s-Gbs"/>
+                        <outlet property="toiletLid" destination="9xK-zg-fxh" id="wQF-lu-gTg"/>
+                        <outlet property="toiletView" destination="vxp-hn-xrN" id="G37-Uy-D2O"/>
+                        <segue destination="VmT-fr-p6B" kind="presentation" identifier="goToStart" modalTransitionStyle="crossDissolve" id="XZ7-SS-lCs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="1vZ-ZC-Lbx">
+                    <connections>
+                        <action selector="goToStartScreen:" destination="BYZ-38-t0r" id="Svx-7e-wj1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="134.78260869565219" y="131.25"/>
+            <point key="canvasLocation" x="686" y="115"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="a3w-5Y-8m6">
+            <objects>
+                <viewControllerPlaceholder id="Ndi-mu-7ZW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmG-qe-W0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
-        <image name="background3" width="1242" height="2208"/>
-        <image name="background4" width="1242" height="2208"/>
-        <image name="bajsbildStart" width="320" height="259"/>
-        <image name="home" width="129" height="119"/>
-        <image name="lock" width="413" height="161"/>
-        <image name="settings" width="129" height="119"/>
-        <image name="sound" width="125" height="119"/>
-        <image name="toiletimage1" width="1213" height="2066"/>
+        <image name="background" width="414" height="736"/>
+        <image name="card6" width="250" height="261"/>
+        <image name="cardBack" width="250" height="255"/>
+        <image name="home" width="104" height="97"/>
+        <image name="pipe" width="1939" height="525"/>
+        <image name="playAgain" width="98" height="98"/>
+        <image name="settings" width="104" height="97"/>
+        <image name="sound" width="102" height="96"/>
+        <image name="toiletBottom" width="207" height="103"/>
+        <image name="toiletLid" width="207" height="103"/>
+        <image name="toiletTop" width="207" height="103"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="XZ7-SS-lCs"/>
+    </inferredMetricsTieBreakers>
 </document>

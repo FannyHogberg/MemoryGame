@@ -18,20 +18,21 @@ class Level{
     """
     var pairOfCards = 2
     var noMoreLevel = false
-    var cardWidth : Int
-    var cardHeight : Int
-    var viewHeight : Double
-    var viewWidth : Double
+  //  var viewvName = "level1"
+//    var cardWidth : Int
+//    var cardHeight : Int
+//    var viewHeight : Double
+//    var viewWidth : Double
 
  
-    init(heightOfView: Double, widthOfView: Double ) {
-        
-        viewHeight = heightOfView
-        viewWidth =  widthOfView
-        
-        cardWidth = Int(viewWidth * 0.2)
-        cardHeight = Int(viewWidth * 0.2)
-    }
+//    init(heightOfView: Double, widthOfView: Double ) {
+//
+//        viewHeight = heightOfView
+//        viewWidth =  widthOfView
+//
+//        cardWidth = Int(viewWidth * 0.35)
+//        cardHeight = Int(viewWidth * 0.35)
+//    }
 
     
     func setNextLevel() {
@@ -43,9 +44,10 @@ class Level{
             """
             
             pairOfCards = 3
+     //       viewvName = "level2"
     
-            cardWidth = Int(viewWidth * 0.25)
-            cardHeight = Int(viewWidth * 0.25)
+//            cardWidth = Int(viewWidth * 0.25)
+//            cardHeight = Int(viewWidth * 0.25)
             
         }
         else if levelNumber == 2{
@@ -54,15 +56,19 @@ class Level{
             Du klarade hela spelet!
             Vill du spela igen?
             """
-            noMoreLevel = true
             pairOfCards = 5
-            cardWidth = Int(viewWidth * 0.2)
-            cardHeight = Int(viewWidth * 0.2)
+ //           viewvName = "level3"
+//            cardWidth = Int(viewWidth * 0.2)
+//            cardHeight = Int(viewWidth * 0.2)
             
+        }
+        else if levelNumber == 3{
+            noMoreLevel = true
         }
         levelNumber += 1
         
     }
+    
     
     
     func resetLevel(){
@@ -71,6 +77,8 @@ class Level{
         pairOfCards = 2
         
         noMoreLevel = false
+        
+  //      viewvName = "level1"
         
     }
     

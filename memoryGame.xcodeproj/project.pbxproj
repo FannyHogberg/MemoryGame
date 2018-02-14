@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D080F81202BACF500A17399 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D080F80202BACF500A17399 /* music.mp3 */; };
+		4D080F87202BB5B500A17399 /* fart6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D080F82202BB5B400A17399 /* fart6.mp3 */; };
+		4D080F88202BB5B500A17399 /* fart7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D080F83202BB5B400A17399 /* fart7.mp3 */; };
+		4D080F89202BB5B500A17399 /* fart8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D080F84202BB5B400A17399 /* fart8.mp3 */; };
+		4D080F8A202BB5B500A17399 /* fart10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D080F85202BB5B400A17399 /* fart10.mp3 */; };
+		4D080F8B202BB5B500A17399 /* fart9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D080F86202BB5B500A17399 /* fart9.mp3 */; };
+		4D080F8F202BB5CD00A17399 /* fart13.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D080F8C202BB5CD00A17399 /* fart13.mp3 */; };
+		4D080F90202BB5CD00A17399 /* fart12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D080F8D202BB5CD00A17399 /* fart12.mp3 */; };
+		4D080F91202BB5CD00A17399 /* fart11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4D080F8E202BB5CD00A17399 /* fart11.mp3 */; };
 		4D1EABF22004D2CD0004F8EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EABF12004D2CD0004F8EA /* AppDelegate.swift */; };
 		4D1EABF42004D2CD0004F8EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EABF32004D2CD0004F8EA /* ViewController.swift */; };
 		4D1EABF72004D2CD0004F8EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D1EABF52004D2CD0004F8EA /* Main.storyboard */; };
@@ -21,10 +30,22 @@
 		4DAA1CE620152E78002DB565 /* fart2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4DAA1CE120152E78002DB565 /* fart2.mp3 */; };
 		4DAA1CE720152E78002DB565 /* fart3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4DAA1CE220152E78002DB565 /* fart3.mp3 */; };
 		4DAA1CE9201533D1002DB565 /* fart5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4DAA1CE8201533D1002DB565 /* fart5.mp3 */; };
+		4DB392A520275E46002387E2 /* CountUpTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB392A420275E46002387E2 /* CountUpTimer.swift */; };
+		4DB392A72027848B002387E2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB392A62027848B002387E2 /* SettingsViewController.swift */; };
+		4DB623742029DC060043ACB9 /* GlobalAudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB623732029DC060043ACB9 /* GlobalAudioPlayer.swift */; };
 		4DF18EAD201FC86C0051392E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DF18EAC201FC86C0051392E /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D080F80202BACF500A17399 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
+		4D080F82202BB5B400A17399 /* fart6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart6.mp3; sourceTree = "<group>"; };
+		4D080F83202BB5B400A17399 /* fart7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart7.mp3; sourceTree = "<group>"; };
+		4D080F84202BB5B400A17399 /* fart8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart8.mp3; sourceTree = "<group>"; };
+		4D080F85202BB5B400A17399 /* fart10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart10.mp3; sourceTree = "<group>"; };
+		4D080F86202BB5B500A17399 /* fart9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart9.mp3; sourceTree = "<group>"; };
+		4D080F8C202BB5CD00A17399 /* fart13.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart13.mp3; sourceTree = "<group>"; };
+		4D080F8D202BB5CD00A17399 /* fart12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart12.mp3; sourceTree = "<group>"; };
+		4D080F8E202BB5CD00A17399 /* fart11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart11.mp3; sourceTree = "<group>"; };
 		4D1EABEE2004D2CD0004F8EA /* memoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D1EABF12004D2CD0004F8EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D1EABF32004D2CD0004F8EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +62,9 @@
 		4DAA1CE120152E78002DB565 /* fart2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart2.mp3; sourceTree = "<group>"; };
 		4DAA1CE220152E78002DB565 /* fart3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart3.mp3; sourceTree = "<group>"; };
 		4DAA1CE8201533D1002DB565 /* fart5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart5.mp3; sourceTree = "<group>"; };
+		4DB392A420275E46002387E2 /* CountUpTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountUpTimer.swift; sourceTree = "<group>"; };
+		4DB392A62027848B002387E2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4DB623732029DC060043ACB9 /* GlobalAudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalAudioPlayer.swift; sourceTree = "<group>"; };
 		4DF18EAC201FC86C0051392E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,13 +98,17 @@
 		4D1EABF02004D2CD0004F8EA /* memoryGame */ = {
 			isa = PBXGroup;
 			children = (
+				4D080F80202BACF500A17399 /* music.mp3 */,
 				4DAA1CDD20152E10002DB565 /* Sound files */,
 				4D1EABF12004D2CD0004F8EA /* AppDelegate.swift */,
 				4D8C207E2015DB1600C1A777 /* StartViewController.swift */,
 				4D1EABF32004D2CD0004F8EA /* ViewController.swift */,
 				4D1EAC032004D2F40004F8EA /* Card.swift */,
 				4D1EAC052004D3050004F8EA /* CardBank.swift */,
+				4DB392A62027848B002387E2 /* SettingsViewController.swift */,
 				4D938D3E201A1259006D05C2 /* Level.swift */,
+				4DB392A420275E46002387E2 /* CountUpTimer.swift */,
+				4DB623732029DC060043ACB9 /* GlobalAudioPlayer.swift */,
 				4D1EABF52004D2CD0004F8EA /* Main.storyboard */,
 				4D1EABFA2004D2CD0004F8EA /* LaunchScreen.storyboard */,
 				4D1EABFD2004D2CD0004F8EA /* Info.plist */,
@@ -95,6 +123,14 @@
 				4DAA1CE020152E78002DB565 /* fart1.mp3 */,
 				4DAA1CE120152E78002DB565 /* fart2.mp3 */,
 				4DAA1CE220152E78002DB565 /* fart3.mp3 */,
+				4D080F82202BB5B400A17399 /* fart6.mp3 */,
+				4D080F83202BB5B400A17399 /* fart7.mp3 */,
+				4D080F8E202BB5CD00A17399 /* fart11.mp3 */,
+				4D080F8D202BB5CD00A17399 /* fart12.mp3 */,
+				4D080F8C202BB5CD00A17399 /* fart13.mp3 */,
+				4D080F84202BB5B400A17399 /* fart8.mp3 */,
+				4D080F86202BB5B500A17399 /* fart9.mp3 */,
+				4D080F85202BB5B400A17399 /* fart10.mp3 */,
 				4DAA1CDE20152E78002DB565 /* fart4.mp3 */,
 				4DAA1CE8201533D1002DB565 /* fart5.mp3 */,
 				4D8C20802015F89D00C1A777 /* nextLevel.mp3 */,
@@ -161,14 +197,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D080F90202BB5CD00A17399 /* fart12.mp3 in Resources */,
+				4D080F81202BACF500A17399 /* music.mp3 in Resources */,
 				4DAA1CE320152E78002DB565 /* fart4.mp3 in Resources */,
 				4DAA1CE9201533D1002DB565 /* fart5.mp3 in Resources */,
+				4D080F88202BB5B500A17399 /* fart7.mp3 in Resources */,
 				4D8C20812015F89D00C1A777 /* nextLevel.mp3 in Resources */,
 				4D1EABFC2004D2CD0004F8EA /* LaunchScreen.storyboard in Resources */,
+				4D080F87202BB5B500A17399 /* fart6.mp3 in Resources */,
 				4DF18EAD201FC86C0051392E /* Assets.xcassets in Resources */,
+				4D080F91202BB5CD00A17399 /* fart11.mp3 in Resources */,
+				4D080F89202BB5B500A17399 /* fart8.mp3 in Resources */,
+				4D080F8F202BB5CD00A17399 /* fart13.mp3 in Resources */,
 				4DAA1CE520152E78002DB565 /* fart1.mp3 in Resources */,
 				4DAA1CE620152E78002DB565 /* fart2.mp3 in Resources */,
 				4D1EABF72004D2CD0004F8EA /* Main.storyboard in Resources */,
+				4D080F8B202BB5B500A17399 /* fart9.mp3 in Resources */,
+				4D080F8A202BB5B500A17399 /* fart10.mp3 in Resources */,
 				4DAA1CE720152E78002DB565 /* fart3.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,8 +229,11 @@
 				4D8C207F2015DB1600C1A777 /* StartViewController.swift in Sources */,
 				4D1EABF42004D2CD0004F8EA /* ViewController.swift in Sources */,
 				4D1EAC042004D2F40004F8EA /* Card.swift in Sources */,
+				4DB392A520275E46002387E2 /* CountUpTimer.swift in Sources */,
+				4DB623742029DC060043ACB9 /* GlobalAudioPlayer.swift in Sources */,
 				4D1EABF22004D2CD0004F8EA /* AppDelegate.swift in Sources */,
 				4D1EAC062004D3050004F8EA /* CardBank.swift in Sources */,
+				4DB392A72027848B002387E2 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

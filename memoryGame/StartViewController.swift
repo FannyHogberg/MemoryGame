@@ -10,6 +10,8 @@ import UIKit
 
 class StartViewController: UIViewController {
     
+
+
     
     @IBOutlet weak var textTitle: UILabel!
     @IBOutlet weak var text: UILabel!
@@ -20,6 +22,11 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if firstTime{
+            playBackgroundMusic()
+
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -28,6 +35,8 @@ class StartViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,7 +57,7 @@ class StartViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseInOut, .allowUserInteraction], animations: {
             
             self.textTitle.center.y += self.view.bounds.height
         //    self.view.backgroundColor = UIColor.white
@@ -56,7 +65,7 @@ class StartViewController: UIViewController {
             
         }, completion: nil)
         
-        UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
+        UIView.animate(withDuration: 1, delay: 0, options: [.allowUserInteraction], animations: {
             
             self.text.alpha = 1
             self.startImage.alpha = 1
