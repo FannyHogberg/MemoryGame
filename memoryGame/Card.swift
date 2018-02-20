@@ -16,10 +16,6 @@ class Card {
     let backImage = UIImage(named: "cardBack")
     let sound : URL
     var isFlipped : Bool = false
-//    var xCoordinate = 0
-//    var yCoordinate = 0
-//    var width = 0
-//    var height = 0
     
     
     init(cardId: String, imageName: String, soundName: String) {
@@ -28,22 +24,12 @@ class Card {
         sound = Bundle.main.url(forResource: soundName, withExtension: "mp3")!
 
     }
-    
-    
-    
-//    func setSize(imagewidth: Int, imageHeight: Int){
-//        width = imagewidth
-//        height = imageHeight
-//    }
+
     
     func setIsFlipped(status: Bool){
         isFlipped = status
     }
     
-    
-//    func setCoordinates(x: Int, y: Int){
-//    self.xCoordinate = x
-//    self.yCoordinate = y
-//}
+
     
 }

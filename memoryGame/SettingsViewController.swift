@@ -60,9 +60,9 @@ class SettingsViewController: UIViewController {
             UIView.transition(with: self.musicButton, duration: 0.5, options: .transitionCrossDissolve , animations: {
                 self.musicButton.image = self.onImage
             }, completion: nil)
-            playBackgroundMusic()
+            
             backgroundMusicIsOn = true
-
+            playBackgroundMusic()
             
         }
         

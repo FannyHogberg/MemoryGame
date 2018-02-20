@@ -8,13 +8,13 @@
 
 import UIKit
 
-import AVFoundation
+//import AVFoundation
 
 
 
-class ViewController: UIViewController{
+class ViewController: UIViewController, CAAnimationDelegate{
     
-    
+    var mask : CALayer?
     var btnInThisLevel = [UIButton]()
     var allViewsHoldingBtn = [UIView]()
     var cardsInThisLevel = [Card]()
@@ -22,21 +22,17 @@ class ViewController: UIViewController{
     let allCardsInBank = CardBank()
     var timer : Timer?
     var countUptimer = CountUpTimer()
-    var timeInterval : Double = 0
-    var audioPlayer : AVAudioPlayer!
     var gameLevel = Level()
     let containerForNextLevelAnimation = UIView()
     
-    var toiletAnimationArray = [UIImage]()
+    var pipeAnimationArray = [UIImage]()
+    var flushAnimationArray = [UIImage]()
     
-    @IBOutlet weak var nextLevelText: UILabel!
- //   @IBOutlet weak var toiletAnimate: UIImageView!
-//    @IBOutlet weak var toiletLid: UIImageView!
     @IBOutlet weak var toiletLid: UIView!
-    
     @IBOutlet weak var toiletView: UIView!
-    
     @IBOutlet weak var pipe: UIImageView!
+    @IBOutlet weak var toiletBottom: UIImageView!
+    
     
     @IBOutlet weak var level1: UIView!
     @IBOutlet weak var level2: UIView!
@@ -44,61 +40,42 @@ class ViewController: UIViewController{
     
     
     @IBOutlet weak var endOfGameView: UIVisualEffectView!
-    
-    
     @IBOutlet weak var endOfGameLabel: UILabel!
     
+    @IBOutlet weak var quitGameVisualEffectView: UIVisualEffectView!
+    @IBOutlet weak var quitViewWithText: UIView!
     
+    @IBOutlet weak var quitGameAnswerYes: UILabel!
+    @IBOutlet weak var quitGameAnswerNo: UILabel!
+    
+    
+    @IBOutlet weak var resetButton: UIImageView!
+    
+    @IBOutlet weak var nextLevelText: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        pipe.center.x -= view.bounds.width
         
-//       let oldFrame = toiletLid.frame
-//
-      //  var anchorPoint = CGPoint(x: 0.4, y: 1)
-//        toiletLid.layer.anchorPoint = CGPoint(x: 0.4, y: 1)
-//       toiletLid.frame = oldFrame
-        
-        
-//        let oldCenter = toiletLid.center
-//        toiletLid.layer.anchorPoint = CGPoint(x: 0.4, y: 1)
-//        toiletLid.center = oldCenter
-//
-    
-        
-//        let centerXConstraint = toiletLid.bounds.midX
-//            toiletLid.layer.anchorPoint = CGPoint(x: 0.4, y: 1)
-//            centerXConstraint.constant = centerXConstraint.constant + toiletLid.bounds.size.width/2
-//
-//
-//        var old = toiletLid.layer.position.x
-//        toiletLid.layer.anchorPoint = CGPoint(x: 0.4, y: 1)
-//        toiletLid.layer.position.x = old
-//
-        
-        
-        
-        
-//
         allViewsHoldingBtn = [level1, level2, level3]
         
-
+        
+        initMask()
+        
         
         
         fixContainerForAnimationFirstTime()
         
-   //     initToiletAnimationArray()
+        initPipeAnimationArray()
+        initFlushAnimation()
+        self.resetNextLevelText()
         
-        nextLevelText.center.x -= view.bounds.width
-        
+        endOfGameView.alpha = 0
         
         
     }
     
-
+    
     
     
     
@@ -117,11 +94,80 @@ class ViewController: UIViewController{
     
     
     
+    func initMask(){
+        let sizeOfMask = self.view.frame.height * 4
+        
+        self.mask = CALayer()
+        self.mask!.contents = UIImage(named: "toMask")!.cgImage
+        self.mask!.contentsGravity = kCAGravityResizeAspect
+        self.mask!.bounds = CGRect(x: 0, y: 0, width: sizeOfMask, height: sizeOfMask)
+        self.mask!.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        self.mask!.position = CGPoint(x: view.frame.width * 0.5, y: view.frame.height * 0.47)
+        
+        
+    }
+    
+    
+    
+    func animateMask(){
+        
+        let maskSizeMiddle = view.frame.size.width * 0.5
+        let maskSizeMiddle2 = maskSizeMiddle * 2.5
+
+        let animation = CAKeyframeAnimation(keyPath: "bounds")
+        animation.delegate = self
+
+ //       animation.beginTime = CACurrentMediaTime() + 0.7      // delay
+
+        let start = self.mask!.bounds
+        let middle = CGRect(x: 0, y: 0, width: maskSizeMiddle, height: maskSizeMiddle)
+        let middle2 = CGRect(x: 0, y: 0, width: maskSizeMiddle2, height: maskSizeMiddle2)
+        let final = CGRect(x: 0, y: 0, width: 1, height: 1)
+
+        animation.values = [start, middle, middle2, final]
+        animation.keyTimes = [0, 0.4,0.6, 1.0]
+        animation.duration = 2.5
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = kCAFillModeForwards
+
+        animation.timingFunctions = [CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut), CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)]
+
+        self.mask?.add(animation, forKey: "bounds")
+        
+    }
+    
+    
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        clearViewAnimation()
+        self.containerForNextLevelAnimation.layer.mask = nil
+        playBackgroundMusic()
+        
+        
+        if gameLevel.levelNumber != allViewsHoldingBtn.count{       //If not last Level
+        self.resetCardsAndButtonsThisLevel()
+        self.gameLevel.setNextLevel()
+        self.createCardsAndBtnForThisLevel()
+        }
+        else{                                                       //check for last level.. reset from beginning.
+            resetButton.isUserInteractionEnabled = true
+            self.resetCardsAndButtonsThisLevel()
+            gameLevel.resetLevel()
+            self.createCardsAndBtnForThisLevel()
+            countUptimer.start()
+            
+        }
+    }
+    
+    
+    
+    
     @IBAction func btnClicked(_ sender: UIButton) {
         
-        playSoundEffect(list: cardsInThisLevel, index: sender.tag-1)
 
- //       playSoundCardInThisLevel(index: sender.tag-1)
+        
+        playSoundEffect(list: cardsInThisLevel, index: sender.tag-1)
+        
         
         if allCardsInBank.countDisplayedCards() < 2{
             flipToShowImage(index: sender.tag-1)
@@ -136,55 +182,107 @@ class ViewController: UIViewController{
                 flipAllCardBack()
             }
         }
-        }
-    
-    
-
-    
-    
-    @IBAction func goToStartScreen(_ sender: UITapGestureRecognizer) {
-        
-        countUptimer.reset()
-        stopTimer()
-       performSegue(withIdentifier: "goToStart", sender: self)
     }
     
     
     
+    @IBAction func flushToilet(_ sender: UITapGestureRecognizer) {
+        playFlushToiletAudio()
+        
+        
+    Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+    self.toiletBottom.startAnimating()
+        }
+    }
+    
+
+    
+    
+    
+    @IBAction func resetButtonClicked(_ sender: UITapGestureRecognizer) {
+        resetButton.isUserInteractionEnabled = false
+        
+        self.containerForNextLevelAnimation.layer.mask = self.mask
+        animateMask()
+        
+        
+
+
+        
+        
+        
+    }
+    
+    
+    
+    @IBAction func homeBtnClicked(_ sender: UITapGestureRecognizer) {
+        quitGameVisualEffectView.effect = nil
+        UIView.animate(withDuration: 5) {
+            self.quitGameVisualEffectView.isHidden = false
+            self.quitGameVisualEffectView.effect = UIBlurEffect(style: UIBlurEffectStyle.prominent)
+        }
+        
+        quitViewWithText.alpha = 0
+        self.quitViewWithText.isHidden = false
+        
+        UIView.animate(withDuration: 1) {
+            self.quitViewWithText.alpha = 1
+        }
+
+    }
+    
+ 
+    @IBAction func goToHomeScreenClicked(_ sender: UITapGestureRecognizer) {
+        countUptimer.reset()
+        stopTimer()
+        performSegue(withIdentifier: "goToStart", sender: self)
+    }
+    
+    
+    @IBAction func keepPlayingClicked(_ sender: UITapGestureRecognizer) {
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.quitGameVisualEffectView.effect = nil
+            self.quitViewWithText.alpha = 0
+            
+        }) { (finished) in
+            self.quitGameVisualEffectView.isHidden = true
+            self.quitViewWithText.isHidden = false
+        }
+    }
     
     
     
     func createCardsAndBtnForThisLevel(){
+            
+            //Creating card for this level.
+            cardsInThisLevel = allCardsInBank.createCardsToPlay(levelInGame: gameLevel)
+            
+            //the view holding btns...
+            let thisLevel = allViewsHoldingBtn[gameLevel.levelNumber-1]
+            
+            //Add to list
+            for subview in thisLevel.subviews{
+                if subview is UIButton{
+                    btnInThisLevel.append(subview as! UIButton)
+                    
+                }
+            }
+            setSettingsForBtnThisLevel()
+            setPositionForBtnBeforeAnimate()
+            
+            
+            thisLevel.isHidden = false
         
-        //Creating card for this level.
-        cardsInThisLevel = allCardsInBank.createCardsToPlay(levelInGame: gameLevel)
-        
-        //the view holding btns...
-        let thisLevel = allViewsHoldingBtn[gameLevel.levelNumber-1]
-        
-        //Add to list
-        for subview in thisLevel.subviews{
-            if subview is UIButton{
-                btnInThisLevel.append(subview as! UIButton)
+            let timeInterval = gameLevel.pipeTimeInterval
+            var index = cardsInThisLevel.count-1
+            timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { _ in
+                
+                self.animateToFinalDestination(index: index)
+                index -= 1
                 
             }
-        }
-        print("BTN IN THIS LEVEL COUNT \(btnInThisLevel.count)")
-        print("CARDIN THIS LEVEL \(cardsInThisLevel.count)")
-        setSettingsForBtnThisLevel()
-        setPositionForBtnBeforeAnimate()
         
-        
-        thisLevel.isHidden = false
-//        view.bringSubview(toFront: thisLevel)
-        
-        var index = cardsInThisLevel.count-1
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            
-            self.animateToFinalDestination(index: index)
-            index -= 1
-            
-        }
         
     }
     
@@ -194,7 +292,7 @@ class ViewController: UIViewController{
         for btn in btnInThisLevel{
             btn.adjustsImageWhenDisabled = false
             btn.imageView?.contentMode = UIViewContentMode.scaleAspectFit
-
+            
         }
         
         
@@ -204,32 +302,30 @@ class ViewController: UIViewController{
     func setPositionForBtnBeforeAnimate(){
         
         let thisLevelContainerY = allViewsHoldingBtn[gameLevel.levelNumber-1].frame.minY
-        print(thisLevelContainerY)
-        let pipeYValue = pipe.frame.midY
+        let pipeYValue = pipe.frame.height * 0.8
         let fromContainerTopToPipe = thisLevelContainerY - pipeYValue
-        print(fromContainerTopToPipe)
         
         
         for btn in btnInThisLevel{
-        
-        let newPositionY = -btn.frame.midY - fromContainerTopToPipe
- 
-        var transform = CGAffineTransform.identity
-        transform = transform.translatedBy(x: 0 , y: newPositionY)
-        transform = transform.scaledBy(x: 0.1, y: 0.1)
-        
+            
+            let newPositionY = -btn.frame.midY - fromContainerTopToPipe
+            
+            var transform = CGAffineTransform.identity
+            transform = transform.translatedBy(x: 0 , y: newPositionY)
+            transform = transform.scaledBy(x: 0.1, y: 0.1)
             
             
             
-        btn.transform = transform
-
+            
+            btn.transform = transform
+            
         }
-
+        
     }
     
     
     
-
+    
     func hidePipe(){
         
         UIView.animate(withDuration: 1.5, delay: 0.0, options: [.curveEaseInOut], animations: {
@@ -240,26 +336,33 @@ class ViewController: UIViewController{
     }
     
     
+    
     func animatePipeToDestination(index: Int){
+        
+        let duration = gameLevel.pipeAnimationDuration
         
         let pipeOpeningPointInImage = pipe.frame.width * 0.3            //Where the pipe opening are.
         let newPositionX = btnInThisLevel[index].frame.midX - pipeOpeningPointInImage
-        
-        UIView.animate(withDuration: 0.8, delay: 0.0, options: [.curveEaseInOut, .allowUserInteraction], animations: {
+          
+        UIView.animate(withDuration: duration, delay: 0.0, options: [.curveEaseInOut, .allowUserInteraction], animations: {
             
             self.pipe.center.x = newPositionX
             
         }, completion: { finished in
-             self.animateButtonToDestination(index: index)
+            self.pipe.startAnimating()
+            playPipeSound()
+            
+            self.animateButtonToDestination(index: index)
         })
         
         
     }
     
     
+    
+    
     func animateButtonToDestination(index: Int){
         
-        //          self.toiletAnimate.startAnimating()
         btnInThisLevel[index].isHidden = false
         let animator = UIViewPropertyAnimator(duration: 1.5, dampingRatio: 0.4) {
             self.btnInThisLevel[index].transform = CGAffineTransform.identity
@@ -293,6 +396,7 @@ class ViewController: UIViewController{
     }
     
     
+    
     func checkAndRunNextLevel() {
         var counter = 0
         
@@ -306,6 +410,7 @@ class ViewController: UIViewController{
         }
         
     }
+    
     
     
     func flipToShowImage(index: Int) {
@@ -414,6 +519,7 @@ class ViewController: UIViewController{
         }
         
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { _ in
+            
             self.checkAndRunNextLevel()
         }
     }
@@ -425,7 +531,7 @@ class ViewController: UIViewController{
         let thisLevelContainer = allViewsHoldingBtn[gameLevel.levelNumber-1]
         let containerHeight = thisLevelContainer.frame.height
         let containerMaxY = thisLevelContainer.frame.maxY
-    
+        
         let distansFromBtnToContainerBottom = containerHeight - btn.frame.midY
         let toiletY = toiletView.frame.midY
         let distansBetweenContainerAndToilet = toiletY - containerMaxY
@@ -445,83 +551,100 @@ class ViewController: UIViewController{
             btn.transform = transform
         }, completion: { finished in
             btn.isHidden = true
+            playPlopInToilet()
             
         })
     }
     
     
-    func removeButtonsAndResetCards(){
-        for button in btnInThisLevel{
-            button.removeFromSuperview()
+    func resetCardsAndButtonsThisLevel(){
+
+        
+        allViewsHoldingBtn[gameLevel.levelNumber-1].isHidden = true
+        
+        for i in 0..<self.btnInThisLevel.count{
+            let buttonImage = cardsInThisLevel[i].backImage
+            btnInThisLevel[i].setImage(buttonImage, for: .normal)
+            btnInThisLevel[i].transform = CGAffineTransform.identity
         }
+        
         btnInThisLevel.removeAll()
+        allCardsInBank.resetAllCards()
+
+        
+
         
     }
     
     
-    func resetAndPlayNextLevel(){
+
+    
+    
+    func endOfGame(){
+                endOfGameView.alpha = 0
+                containerForNextLevelAnimation.addSubview(endOfGameView)
+                endOfGameView.isHidden = false
+                endOfGameLabel.text = """
+                \(gameLevel.nextLevelText)
+                \(String(format:"%.02f", countUptimer.time)) \(NSLocalizedString ("SECONDS", comment: ""))
+                """
+                countUptimer.reset()
         
-        gameLevel.setNextLevel()
+        UIView.animate(withDuration: 1.5) {
+            self.endOfGameView.alpha = 1
+        }
         
-        if gameLevel.noMoreLevel{
+        
+    }
+    
+    func playNextLevel(){
+        
+        if gameLevel.levelNumber < allViewsHoldingBtn.count {               //Check level is not the last
             
+            //Display the "next level text"
+            nextLevelText.text = gameLevel.nextLevelText
+            containerForNextLevelAnimation.addSubview(nextLevelText)
             
-            endOfGameView.isHidden = false
-            endOfGameLabel.text = """
-            HURRA!
-            Du klarade spelet på:
-            \(String(format:"%.02f", countUptimer.time)) sekunder.
-            """
-            countUptimer.reset()
+            UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
+                
+                self.nextLevelText.center.x += self.view.frame.width
+                
+            }, completion: { finish in
+                
+                self.containerForNextLevelAnimation.layer.mask = self.mask
+                self.animateMask()      //When ended animate mask.
+            })
             
         }
         else{
-            removeButtonsAndResetCards()
-            createCardsAndBtnForThisLevel()
-            
-        }       
-        
-    }
-    
-    
-    
-    
-    
-    func newLevelShowText(){
-        
-        nextLevelText.text = gameLevel.nextLevelText
-        self.view.bringSubview(toFront: nextLevelText)
-        
-        UIView.animate(withDuration: 1, delay: 1, options: [], animations: {
-            self.nextLevelText.center.x += self.view.bounds.width
-        }, completion: { finish in
-            
-            self.clearViewAnimation()
-        })
-        
-        
+            endOfGame()
+        }
         
         
     }
+    
+    
+
     
     func clearViewAnimation(){
-        
-        UIView.animate(withDuration: 1, delay: 1, options: .curveEaseInOut, animations: {
-            self.containerForNextLevelAnimation.alpha = 0
-            self.nextLevelText.center.x += self.view.bounds.width
-        }, completion: { _ in
-            self.nextLevelText.center.x -= self.view.bounds.width * 2
-            self.removeFromSuperview()
-            self.resetAndPlayNextLevel()
-            
-        })
+        self.containerForNextLevelAnimation.alpha = 0
+        self.resetNextLevelText()
+        self.removeImagesFromContainerForNextLevelAnimation()
         
         
+        self.endOfGameView.isHidden = true
+     
     }
     
     
+    func resetNextLevelText(){
+    self.nextLevelText.center.x = self.view.frame.width * 0.5
+    self.nextLevelText.center.y = self.view.frame.height * 0.5
+    self.nextLevelText.center.x -= self.view.frame.width
+    }
     
-    func removeFromSuperview(){
+    
+    func removeImagesFromContainerForNextLevelAnimation(){
         for subview in self.containerForNextLevelAnimation.subviews {
             if subview is UIImageView {
                 subview.removeFromSuperview()
@@ -530,53 +653,58 @@ class ViewController: UIViewController{
     }
     
     
+    
+    
+    
     func playAnimation() {
         
         self.containerForNextLevelAnimation.alpha = 1
         
-        
+        let imageSize = Int(view.frame.width * 0.33)
+        let halfImageSize = Int((Double(imageSize) * 0.5))
         var imageXValue = -50
         let widthOfScreen = Int(view.frame.width)
-        var imageEndPosition = Int(view.frame.height)+30
-        timeInterval = 2.0
+        var imageEndPosition = Int(view.frame.height) + Int(Double(halfImageSize) * 0.5)
         var animateLeftToRight = true
         var counter = 0
         
+        let distanceBetweenImages = Int(view.frame.width * 0.13)
         
-        
-        nextLevelAnimation(imageXValue: imageXValue, imageYEndPosition: imageEndPosition)
+        nextLevelAnimation(imageXValue: imageXValue, imageYEndPosition: imageEndPosition, imageSize: imageSize)
         playNextLevelAudio()
-        
+        stopBackgroundMusic()
         timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { _ in
             counter += 1
             if counter % 8 == 0 || counter > 50 && counter % 4 == 0 || counter > 80{
                 if animateLeftToRight == true{
-                    imageXValue += 70
+                    imageXValue += distanceBetweenImages
                 }
                 else{
-                    imageXValue -= 70
+                    imageXValue -= distanceBetweenImages
                 }
                 
-                if imageXValue > widthOfScreen - 100 {
-                    imageEndPosition -= 70
+                if imageXValue > widthOfScreen - halfImageSize{
+                    imageEndPosition -= distanceBetweenImages
                     animateLeftToRight = false
                     
                 }
                 
-                if imageXValue <= -100{
-                    imageEndPosition -= 70
+                if imageXValue <= -halfImageSize {
+                    imageEndPosition -= distanceBetweenImages
                     animateLeftToRight = true
                 }
                 
-                self.nextLevelAnimation(imageXValue: imageXValue, imageYEndPosition: imageEndPosition)
+                self.nextLevelAnimation(imageXValue: imageXValue, imageYEndPosition: imageEndPosition, imageSize: imageSize)
                 
             }
         }
     }
     
     
-    @objc func nextLevelAnimation(imageXValue: Int, imageYEndPosition: Int){
+    @objc func nextLevelAnimation(imageXValue: Int, imageYEndPosition: Int, imageSize: Int){
         
+        
+        let imageStartPositionY = -imageSize
         let randomCardNumber = Int(arc4random_uniform(UInt32(allCardsInBank.list.count)))
         let randomImage = allCardsInBank.list[randomCardNumber].image
         let randomNumber = drand48()-0.5
@@ -586,7 +714,7 @@ class ViewController: UIViewController{
         
         
         
-        imageView.frame = CGRect(x: imageXValue, y: -129, width: 162, height: 129)
+        imageView.frame = CGRect(x: imageXValue, y: imageStartPositionY, width: imageSize, height: imageSize)
         containerForNextLevelAnimation.addSubview(imageView)
         imageView.contentMode = .scaleAspectFit
         imageView.transform = imageView.transform.rotated(by: CGFloat(randomNumber))
@@ -595,43 +723,15 @@ class ViewController: UIViewController{
             imageView.frame.origin.y += CGFloat(endPosition)
         }, completion: nil)
         
-        if imageYEndPosition <= -20{
+        if imageYEndPosition <= -Int((Double(imageSize) * 0.5)){ //Half of image size
             stopTimer()
-            newLevelShowText()
+            playNextLevel()
         }
         
         
     }
     
-    func playNextLevelAudio(){
-        if soundEffectIsOn {
-        let audio = Bundle.main.url(forResource: "nextLevel", withExtension: "mp3")!
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: audio)
-        }
-        catch{
-            print(error)
-        }
-        audioPlayer.play()
-        }
-    }
     
-    
-//    func playSoundCardInThisLevel(index: Int){
-//
-//        
-    
-//        do {
-//            audioPlayer = try AVAudioPlayer(contentsOf: cardsInThisLevel[index].sound)
-//        }
-//        catch{
-//            print(error)
-//        }
-//        audioPlayer.play()
-//
-        
-        
-//    }
     
     
     
@@ -643,47 +743,81 @@ class ViewController: UIViewController{
         }
     }
     
-
+    
     
     func openToiletLid() {
         
-                    let animationKey = "rotation"
+        let duration = 1.0
         
-                        let animateOne = CABasicAnimation(keyPath: "transform.rotation")
-                        animateOne.duration = 1
-                        animateOne.repeatCount = 1
-                        animateOne.fromValue = toiletLid.layer.presentation()?.value(forKeyPath: "transform.rotation")
-                        animateOne.toValue = (Float(Double.pi) * (-0.5))
-                        animateOne.autoreverses = true
+        
+        let animationKey = "rotation"
+        
+        let animateOne = CABasicAnimation(keyPath: "transform.rotation")
+        animateOne.duration = duration
+        animateOne.repeatCount = 1
+        animateOne.fromValue = toiletLid.layer.presentation()?.value(forKeyPath: "transform.rotation")
+        animateOne.toValue = (Float(Double.pi) * (-0.5))
+        animateOne.autoreverses = true
+        
+        
+        self.toiletLid.layer.add(animateOne, forKey: animationKey)
+        
+    }
+    
+    
 
-                    self.toiletLid.layer.add(animateOne, forKey: animationKey)
+    
+    
+                func initPipeAnimationArray(){
+                    for i in 1...4{
+                        let image : UIImage!
+                        image = UIImage(named: "pipe\(i)")
+                        pipeAnimationArray.append(image)
+                    }
+                    for i in (1...4).reversed(){
+                        let image : UIImage!
+                        image = UIImage(named: "pipe\(i)")
+                        pipeAnimationArray.append(image)
+                    }
+    
+                    pipe.animationImages = pipeAnimationArray
+                    pipe.animationDuration = 0.3
+                    pipe.animationRepeatCount = 1
     
                 }
     
+    func initFlushAnimation(){
+        for i in 1...3{
+            let image : UIImage!
+            image = UIImage(named: "toiletBottom\(i)")
+            flushAnimationArray.append(image)
+        }
+        
+        for i in (1...3).reversed(){
+            let image : UIImage!
+            image = UIImage(named: "toiletBottom\(i)")
+            flushAnimationArray.append(image)
+        }
+        flushAnimationArray.append(UIImage(named: "toiletBottom4")!)
+        flushAnimationArray.append(UIImage(named: "toiletBottom5")!)
+        flushAnimationArray.append(UIImage(named: "toiletBottom4")!)
+        
+        for i in 6...8{
+            let image : UIImage!
+            image = UIImage(named: "toiletBottom\(i)")
+            flushAnimationArray.append(image)
+        }
+        
+        for i in (6...8).reversed(){
+            let image : UIImage!
+            image = UIImage(named: "toiletBottom\(i)")
+            flushAnimationArray.append(image)
+        }
+        toiletBottom.animationImages = flushAnimationArray
+        toiletBottom.animationDuration = 1.6
+        toiletBottom.animationRepeatCount = 1
+    }
     
-        
-        
-        
-        
-//            func initToiletAnimationArray(){
-//                for i in 1...10{
-//                    let image : UIImage!
-//                    image = UIImage(named: "toiletAnimate\(i)")
-//                    toiletAnimationArray.append(image)
-//                }
-//                for i in (1...10).reversed(){
-//                    let image : UIImage!
-//                    image = UIImage(named: "toiletAnimate\(i)")
-//                    toiletAnimationArray.append(image)
-//                }
-//
-//                toiletAnimate.animationImages = toiletAnimationArray
-//                toiletAnimate.animationDuration = 0.5
-//                toiletAnimate.animationRepeatCount = 1
-//
-//
-//            }
     
-            
 }
 

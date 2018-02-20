@@ -13,10 +13,12 @@ class StartViewController: UIViewController {
 
 
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var textTitle: UILabel!
     @IBOutlet weak var text: UILabel!
     
-    @IBOutlet weak var arrow: UIButton!
+
+    @IBOutlet weak var arrow: UIImageView!
     
     @IBOutlet weak var startImage: UIImageView!
     
@@ -41,7 +43,7 @@ class StartViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        textTitle.center.y -= view.bounds.height
+        textTitle.center.y -= textTitle.frame.minY
         text.alpha = 0
         startImage.alpha = 0
         arrow.alpha = 0
@@ -59,7 +61,7 @@ class StartViewController: UIViewController {
         
         UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseInOut, .allowUserInteraction], animations: {
             
-            self.textTitle.center.y += self.view.bounds.height
+            self.textTitle.center.y += self.textTitle.frame.minY
         //    self.view.backgroundColor = UIColor.white
             
             
@@ -85,9 +87,7 @@ class StartViewController: UIViewController {
     }
     
     
-    @IBAction func goToGame(_ sender: UIButton) {
-        performSegue(withIdentifier: "startGame", sender: self)
-    }
+
     
     
 

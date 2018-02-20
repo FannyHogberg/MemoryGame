@@ -12,59 +12,32 @@ class Level{
     
     
     var levelNumber = 1
-    var nextLevelText = """
-    Jippi!! Du klarade det!
-    Nu kommer det mer bajs!
-    """
+    var nextLevelText = "\(NSLocalizedString ("LEVEL", comment: "")) 2 👏🏽"
     var pairOfCards = 2
-    var noMoreLevel = false
-  //  var viewvName = "level1"
-//    var cardWidth : Int
-//    var cardHeight : Int
-//    var viewHeight : Double
-//    var viewWidth : Double
-
- 
-//    init(heightOfView: Double, widthOfView: Double ) {
-//
-//        viewHeight = heightOfView
-//        viewWidth =  widthOfView
-//
-//        cardWidth = Int(viewWidth * 0.35)
-//        cardHeight = Int(viewWidth * 0.35)
-//    }
-
+    var pipeAnimationDuration = 0.8
+    var pipeTimeInterval : Double = 1.0
+    
+    
     
     func setNextLevel() {
         if levelNumber == 1{
             
-            nextLevelText = """
-            Du är riktigt bra på det här!
-            Nu blir det svårare
-            """
-            
+            nextLevelText = "\(NSLocalizedString ("LEVEL", comment: "")) 3 👏🏽"
             pairOfCards = 3
-     //       viewvName = "level2"
-    
-//            cardWidth = Int(viewWidth * 0.25)
-//            cardHeight = Int(viewWidth * 0.25)
+            pipeAnimationDuration = 0.6
+            pipeTimeInterval = 0.8
             
         }
+            
         else if levelNumber == 2{
             
-            nextLevelText = """
-            Du klarade hela spelet!
-            Vill du spela igen?
-            """
+            nextLevelText = "\(NSLocalizedString ("END_OF_GAME_TEXT", comment: ""))"
+
             pairOfCards = 5
- //           viewvName = "level3"
-//            cardWidth = Int(viewWidth * 0.2)
-//            cardHeight = Int(viewWidth * 0.2)
-            
+            pipeAnimationDuration = 0.5
+            pipeTimeInterval = 0.7
         }
-        else if levelNumber == 3{
-            noMoreLevel = true
-        }
+        
         levelNumber += 1
         
     }
@@ -73,17 +46,14 @@ class Level{
     
     func resetLevel(){
         levelNumber = 1
-        
         pairOfCards = 2
-        
-        noMoreLevel = false
-        
-  //      viewvName = "level1"
-        
+        nextLevelText = "\(NSLocalizedString ("LEVEL", comment: "")) 2 👏🏽"
+        pipeAnimationDuration = 0.8
+        pipeTimeInterval = 1.0
     }
     
     
-
+    
     
     
     
