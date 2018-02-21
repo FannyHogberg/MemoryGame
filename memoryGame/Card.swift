@@ -14,14 +14,14 @@ class Card {
     let id : String
     let image : UIImage
     let backImage = UIImage(named: "cardBack")
-    let sound : URL
+    let soundFileName : String
     var isFlipped : Bool = false
     
     
     init(cardId: String, imageName: String, soundName: String) {
         id = cardId
         image = UIImage(named: imageName)!
-        sound = Bundle.main.url(forResource: soundName, withExtension: "mp3")!
+        soundFileName = soundName
 
     }
 

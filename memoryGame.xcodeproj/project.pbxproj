@@ -113,7 +113,6 @@
 		4D1EABF02004D2CD0004F8EA /* memoryGame */ = {
 			isa = PBXGroup;
 			children = (
-				4D080F80202BACF500A17399 /* music.mp3 */,
 				4DAA1CDD20152E10002DB565 /* Sound files */,
 				4D1EABF12004D2CD0004F8EA /* AppDelegate.swift */,
 				4D8C207E2015DB1600C1A777 /* StartViewController.swift */,
@@ -136,6 +135,7 @@
 		4DAA1CDD20152E10002DB565 /* Sound files */ = {
 			isa = PBXGroup;
 			children = (
+				4D080F80202BACF500A17399 /* music.mp3 */,
 				4D1CAD3A203C790500171C20 /* pipeSound1.mp3 */,
 				4D1CAD3F203C808E00171C20 /* pipeSound2.mp3 */,
 				4D1CAD38203C790400171C20 /* pipeSound3.mp3 */,
