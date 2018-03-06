@@ -10,8 +10,16 @@
 /* Class = "UILabel"; text = "Musik"; ObjectID = "JIq-Op-rQw"; */
 "JIq-Op-rQw.text" = "Musik";
 
-/* Class = "UILabel"; text = "Label"; ObjectID = "Oxa-TB-kqk"; */
-"Oxa-TB-kqk.text" = "Label";
 
 /* Class = "UILabel"; text = "Ljudeffekter"; ObjectID = "Stc-LX-HGO"; */
 "Stc-LX-HGO.text" = "Ljudeffekter";
+
+"Q4U-9K-hKG.text" = "DU KLARADE DET!";
+
+"d6m-wM-WUT.text" = "NIVÅ 1";
+
+"H5y-mG-5ND.text" = "NIVÅ 2";
+
+"qcJ-gD-w4r.text" = "NIVÅ 3";
+
+"X8C-vz-1cJ.text" = "TOTAL TID";

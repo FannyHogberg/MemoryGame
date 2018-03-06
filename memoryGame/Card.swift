@@ -8,28 +8,51 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class Card {
     
-    let id : String
+    var audioPlayer : AVAudioPlayer?
+    let id : Int
     let image : UIImage
-    let backImage = UIImage(named: "cardBack")
+    let backImage = UIImage(named: "cardBack1")
     let soundFileName : String
     var isFlipped : Bool = false
+    var flippedCounter = 0
     
     
-    init(cardId: String, imageName: String, soundName: String) {
+    init(cardId: Int, imageName: String, soundName: String) {
         id = cardId
         image = UIImage(named: imageName)!
         soundFileName = soundName
-
     }
-
+        
+        func playSound(){
+            
+            if soundEffectIsOn{
+            audioPlayer?.play()
+            }
+        }
     
-    func setIsFlipped(status: Bool){
-        isFlipped = status
+    
+    func flipCard(){
+        if isFlipped == true{
+            isFlipped = false
+        }
+        else{
+            isFlipped = true
+            flippedCounter += 1
+        }
     }
     
-
+    func setIsFlippedToFalse(){
+        isFlipped = false
+    }
+    
+    
+    func resetCard(){
+        isFlipped = false
+        flippedCounter = 0
+    }
     
 }

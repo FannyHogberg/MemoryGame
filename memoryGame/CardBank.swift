@@ -8,7 +8,7 @@
 
 import Foundation
 
-    
+
 
 class CardBank{
     
@@ -20,8 +20,8 @@ class CardBank{
     init() {
         
         for number in 1...12{
-            list.append(Card(cardId: "card\(number)", imageName: "card\(number)", soundName: "fart\(number)"))
-            list.append(Card(cardId: "card\(number)", imageName: "card\(number)", soundName: "fart\(number)"))
+            list.append(Card(cardId: number, imageName: "card\(number)", soundName: "fart\(number)"))
+            list.append(Card(cardId: number, imageName: "card\(number)", soundName: "fart\(number)"))
         }
         
         
@@ -41,7 +41,7 @@ class CardBank{
     
     
     
-
+    
     //Returns an array of different Card Objects. min: 1, max: cards in cardbank / 2
     func getRandomDifferentCardPairs(numberOfPairs: Int) -> [Card]{
         
@@ -65,7 +65,7 @@ class CardBank{
         }
         return listOfCards
     }
-
+    
     
     
     //Shuffles the Cards in an array.
@@ -83,8 +83,8 @@ class CardBank{
         
     }
     
-
-
+    
+    
     
     //Run this function when two cards are flipped
     func checkIfDisplayedCardsAreEqual () -> Bool{
@@ -102,18 +102,7 @@ class CardBank{
     }
     
     
-//    func checkIfTwoCardsAreDisplayed() -> Bool{
-//        var counter = 0
-//        for card in list{
-//            if card.isFlipped{
-//                counter += 1
-//            }
-//        }
-//        if counter == 2{
-//            return true
-//        }
-//        return false
-//    }
+    
     
     func countDisplayedCards() -> Int{
         var counter = 0
@@ -128,19 +117,37 @@ class CardBank{
     
     
     
+    func didAnyCardFlippedMoreThanTwoTimes() -> Bool{
+        
+        for card in list{
+            if card.flippedCounter >= 3{
+                return true
+            }
+        }
+        return false
+    }
+    
+    
+    func setAllCardToBeNotFlipped(){
+        for card in list{
+            card.setIsFlippedToFalse()
+        }
+    }
+    
+    
     func resetAllCards(){
         for card in list{
-            card.isFlipped = false
+            card.resetCard()
         }
         
         
     }
     
     
+    
+}
 
-    }
-    
-    
-    
+
+
 
 

@@ -6,8 +6,7 @@
   Copyright © 2018 Fanny Högberg. All rights reserved.
 */
 "LEVEL" = "LEVEL";
-"END_OF_GAME_TEXT" = "You made it! \nTotal time:";
-"SECONDS" = "seconds";
+"TIMER_RESULTS" = "Total time:";
 
 
 

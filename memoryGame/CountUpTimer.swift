@@ -21,7 +21,7 @@ class CountUpTimer{
     
     @objc func saveData(){
         time += 0.1
-      //  print(time)
+        //  print(time)
     }
     
     func reset(){
@@ -36,7 +36,7 @@ class CountUpTimer{
         timer.invalidate()
         
     }
-
+    
     
     
     

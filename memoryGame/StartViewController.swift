@@ -10,29 +10,31 @@ import UIKit
 
 class StartViewController: UIViewController {
     
-
-
+    
+    
     
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var textTitle: UILabel!
-    @IBOutlet weak var text: UILabel!
-    
-
     @IBOutlet weak var arrow: UIImageView!
-    
     @IBOutlet weak var startImage: UIImageView!
+    @IBOutlet weak var settingsBtn: UIImageView!
+    
+    var startImageArray = [UIImage]()
+    var timer : Timer?
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if firstTime{
+        self.initStartImageAnimation()      //prepair the blinking animation
+
+        if firstTime{                       //The music will not start from the beginning every time you load...
             playBackgroundMusic()
-
         }
-
-        // Do any additional setup after loading the view.
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,44 +42,37 @@ class StartViewController: UIViewController {
     
     
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        textTitle.center.y -= textTitle.frame.minY
-        text.alpha = 0
-        startImage.alpha = 0
-        arrow.alpha = 0
-        arrow.center.x -= 20
-        
-      //  self.view.backgroundColor = UIColor.brown
-        
-        
-        
+        settingsBtn.alpha = 0
+        containerView.alpha = 0
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseInOut, .allowUserInteraction], animations: {
+
+        //Fade in the view
+        UIView.animate(withDuration: 2, delay: 0, options: .allowUserInteraction, animations: {
             
-            self.textTitle.center.y += self.textTitle.frame.minY
-        //    self.view.backgroundColor = UIColor.white
+            self.containerView.alpha = 1
+            self.settingsBtn.alpha = 1
             
+        }) { (finished) in
+
+            self.startAnimateStartImage()             //Start blink
             
-        }, completion: nil)
+        }
         
-        UIView.animate(withDuration: 1, delay: 0, options: [.allowUserInteraction], animations: {
-            
-            self.text.alpha = 1
-            self.startImage.alpha = 1
-            self.arrow.alpha = 1
-            
-        }, completion: nil)
-        
+
+        //Arrow on repeat...
         UIView.animate(withDuration: 1, delay: 0.7, options: [.repeat, .autoreverse, .allowUserInteraction], animations: {
             
-            self.arrow.center.x += 20
+            self.arrow.center.x += 30
             
             
         }, completion: nil)
@@ -87,18 +82,55 @@ class StartViewController: UIViewController {
     }
     
     
-
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func startAnimateStartImage(){
+        self.startImage.startAnimating()    //for first time
+        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { _ in
+            
+            self.startImage.startAnimating()
+            
+            
+        }
     }
-    */
+    
+    //put the images in the array...
+    func initStartImageAnimation(){
+        
+        for i in 1...6{
+            
+            let image : UIImage!
+            image = UIImage(named: "cardBack\(i)")
+            startImageArray.append(image)
+        }
+        for i in (1...6).reversed(){
+            let image : UIImage!
+            image = UIImage(named: "cardBack\(i)")
+            startImageArray.append(image)
+        }
+        
+        startImage.animationImages = startImageArray
+        startImage.animationDuration = 0.5
+        startImage.animationRepeatCount = 2
+    }
+    
+    
 
+    
+    @IBAction func preformSegue(_ sender: UITapGestureRecognizer) {
+        stopTimer()
+        performSegue(withIdentifier: "playGame", sender: self)
+        
+        
+    }
+    
+    
+    func stopTimer(){
+        
+        if let timer = timer{
+            timer.invalidate()
+        }
+        
+        
+    }
+    
+    
 }

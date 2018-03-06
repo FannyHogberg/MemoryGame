@@ -14,8 +14,8 @@ class SettingsViewController: UIViewController {
     
     let offImage = UIImage(named: "noSound")
     let onImage = UIImage(named: "sound")
-
-
+    
+    
     
     @IBOutlet weak var musicButton: UIImageView!
     
@@ -23,10 +23,10 @@ class SettingsViewController: UIViewController {
     
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         if !backgroundMusicIsOn{
             musicButton.image = offImage
         }
@@ -37,17 +37,17 @@ class SettingsViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     
     @IBAction func settingsForMusic(_ sender: UITapGestureRecognizer) {
         
-
+        
         if  backgroundMusicIsOn
         {
             UIView.transition(with: self.musicButton, duration: 0.5, options: .transitionCrossDissolve , animations: {
@@ -73,9 +73,9 @@ class SettingsViewController: UIViewController {
         
         if soundEffectIsOn{
             
-                UIView.transition(with: self.audioButton, duration: 0.5, options: .transitionCrossDissolve , animations: {
-                    self.audioButton.image = self.offImage
-                }, completion: nil)
+            UIView.transition(with: self.audioButton, duration: 0.5, options: .transitionCrossDissolve , animations: {
+                self.audioButton.image = self.offImage
+            }, completion: nil)
             
             soundEffectIsOn = false
         }
@@ -84,7 +84,7 @@ class SettingsViewController: UIViewController {
             UIView.transition(with: self.audioButton, duration: 0.5, options: .transitionCrossDissolve , animations: {
                 self.audioButton.image = self.onImage
             }, completion: nil)
-
+            
             soundEffectIsOn = true
             
         }
@@ -95,13 +95,13 @@ class SettingsViewController: UIViewController {
     
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

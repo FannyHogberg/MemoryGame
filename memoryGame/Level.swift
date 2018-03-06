@@ -8,32 +8,28 @@
 
 import Foundation
 
+
+
 class Level{
     
     
     var levelNumber = 1
-    var nextLevelText = "\(NSLocalizedString ("LEVEL", comment: "")) 2 👏🏽"
     var pairOfCards = 2
     var pipeAnimationDuration = 0.8
     var pipeTimeInterval : Double = 1.0
-    
+    var pointsList = [Int]()
     
     
     func setNextLevel() {
         if levelNumber == 1{
-            
-            nextLevelText = "\(NSLocalizedString ("LEVEL", comment: "")) 3 👏🏽"
-            pairOfCards = 3
+            pairOfCards += 1
             pipeAnimationDuration = 0.6
             pipeTimeInterval = 0.8
             
         }
             
         else if levelNumber == 2{
-            
-            nextLevelText = "\(NSLocalizedString ("END_OF_GAME_TEXT", comment: ""))"
-
-            pairOfCards = 5
+            pairOfCards += 2
             pipeAnimationDuration = 0.5
             pipeTimeInterval = 0.7
         }
@@ -47,14 +43,30 @@ class Level{
     func resetLevel(){
         levelNumber = 1
         pairOfCards = 2
-        nextLevelText = "\(NSLocalizedString ("LEVEL", comment: "")) 2 👏🏽"
         pipeAnimationDuration = 0.8
         pipeTimeInterval = 1.0
+        pointsList.removeAll()
+    }
+    
+    
+    func savePointsThisLevel(points : Int){
+        pointsList.append(points)
     }
     
     
     
-    
+    //return -1 if no value is saved in pointsLevel
+    func getPointThisLevel(levelNumber : Int) -> Int{
+        
+        if levelNumber >= 1 && levelNumber<=3 && pointsList.count == 3{
+            
+            return pointsList[levelNumber-1]
+            
+            
+        }
+        
+        return -1
+    }
     
     
     
