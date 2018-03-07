@@ -8,12 +8,13 @@
 
 import UIKit
 
-//import AVFoundation
+import AVFoundation
 
 
 
 class ViewController: UIViewController, CAAnimationDelegate{
     
+
     var mask : CALayer?
     var btnInThisLevel = [UIButton]()
     var allViewsHoldingBtn = [UIView]()
@@ -76,6 +77,7 @@ class ViewController: UIViewController, CAAnimationDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         
         initCardBackBlink()
@@ -203,10 +205,8 @@ class ViewController: UIViewController, CAAnimationDelegate{
         
         sender.imageView?.stopAnimating()   //The card cant blink when you flip cards.
         
-//        cardsInThisLevel[sender.tag-1].playSound()
-        playSoundEffect(list: cardsInThisLevel, index: sender.tag-1)
-        
-        
+        cardsInThisLevel[sender.tag-1].playSound()
+                        
         if allCardsInBank.countDisplayedCards() < 2{
             flipToShowImage(index: sender.tag-1)
             
@@ -232,8 +232,8 @@ class ViewController: UIViewController, CAAnimationDelegate{
     
     @IBAction func flushToilet(_ sender: UITapGestureRecognizer) {
         
-       // playFlushToiletAudio()
-        playThisSound(named: .flushToilet)
+        playFlushToiletAudio()
+
         self.toiletBottom.startAnimating()
         
     }
@@ -245,8 +245,8 @@ class ViewController: UIViewController, CAAnimationDelegate{
     @IBAction func resetButtonClicked(_ sender: UITapGestureRecognizer) {
         resetButton.isUserInteractionEnabled = false
         fadeBackgroundMusic(seconds: 3)
-        playThisSound(named: .FlushToiletLong)
         
+        playFlushToiletLongAudio()
         resetToLevel1()
 
     }
@@ -440,7 +440,6 @@ class ViewController: UIViewController, CAAnimationDelegate{
         }, completion: { finished in
             self.pipe.startAnimating()
             playPipeSound()
-            
             self.animateButtonToDestination(index: index)
         })
     }
@@ -702,8 +701,8 @@ class ViewController: UIViewController, CAAnimationDelegate{
 
             btn1.isHidden = true
             btn2.isHidden = true
-
-                playThisSound(named: .plop)
+            
+            playPlopInToilet()
                 self.checkAndRunNextLevel()
             }
             
@@ -739,10 +738,8 @@ class ViewController: UIViewController, CAAnimationDelegate{
     
     func endOfGame(){
         
-        playThisSound(named: .jippie)
-
         
-        
+        playJippieAudio()
         
         let stacksHoldningScore = [scoreLevel1Stack, scoreLevel2Stack, scoreLevel3Stack]
         let viewsHoldingImages = [level1ScoreImages, level2ScoreImages, level3ScoreImages]
@@ -1032,8 +1029,7 @@ class ViewController: UIViewController, CAAnimationDelegate{
                 let animator = UIViewPropertyAnimator(duration: 1.5, dampingRatio: 0.6) {
                     scoreImage.transform = CGAffineTransform.identity
                     
-                    
-                    playThisSound(named: .fart)
+                    playOneFart()
                 }
                 
                 animator.startAnimation()
@@ -1131,7 +1127,9 @@ class ViewController: UIViewController, CAAnimationDelegate{
         let distanceBetweenImages = Int(view.frame.width * 0.13)
         
         nextLevelAnimation(imageXValue: imageXValue, imageYEndPosition: imageEndPosition, imageSize: imageSize)
-        playThisSound(named: .nextLevel)
+        
+        playNextLevelAudio()
+        
         fadeBackgroundMusic(seconds: 6)
         timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true) { _ in
             counter += 1

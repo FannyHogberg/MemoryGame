@@ -6,74 +6,44 @@
 //  Copyright © 2018 Fanny Högberg. All rights reserved.
 //
 
+
 import Foundation
+import UIKit
 import AVFoundation
-import AudioToolbox
 
 
-
-var listOfUrlsForCard = [URL?]()
+var soundEffectIsOn = true
+var backgroundMusicIsOn = true
+var firstTime = true
 
 var backgroundMusicPlayer: AVAudioPlayer?
 
-var audioEffectPlayer1 : AVAudioPlayer?
+var audioEffectPlayer : AVAudioPlayer?
 
-var audioEffectPlayer2 : AVAudioPlayer?
+var flushToiletPlayer : AVAudioPlayer?
 
-var audioEffectPlayer3 : AVAudioPlayer?
+var pipeSoundPlayer : AVAudioPlayer?
 
-var audioEffectPlayer4 : AVAudioPlayer?
+var plopInToiletPlayer : AVAudioPlayer?
 
-var soundEffectIsOn = true
-
-var backgroundMusicIsOn = true
-
-var firstTime = true
-
-var soundURL: NSURL?
-var soundID: SystemSoundID = 0
+var jippiePlayer : AVAudioPlayer?
 
 
 
 
 
-
-enum thisAudio : String {
-    case flushToilet = "flushToilet"
-    case FlushToiletLong = "flushToiletLong"
-    case plop = "plop"
-    case jippie = "jippie"
-    case nextLevel = "nextLevel"
-    case fart = "fart3"
-}
-
-
-func playThisSound(named : thisAudio){
+func playCardSoundEffect(list : [Card], index: Int){
     
     if soundEffectIsOn{
-        
-        if let filePath = Bundle.main.path(forResource: named.rawValue, ofType: "wav"){
-            soundURL = NSURL(fileURLWithPath: filePath)
-        }
-        if let url = soundURL {
-            AudioServicesCreateSystemSoundID(url, &soundID)
-            AudioServicesPlaySystemSound(soundID)
-        }
-    }
-}
-
-
-
-func playSoundEffect(list : [Card], index: Int){
-
-    if soundEffectIsOn{
-        
-        if let filePath = Bundle.main.path(forResource: list[index].soundFileName, ofType: "wav"){
-            soundURL = NSURL(fileURLWithPath: filePath)
-        }
-        if let url = soundURL {
-            AudioServicesCreateSystemSoundID(url, &soundID)
-            AudioServicesPlaySystemSound(soundID)
+        if let filePath = Bundle.main.url(forResource: list[index].soundFileName, withExtension: "wav")
+        {
+            do {
+                audioEffectPlayer = try AVAudioPlayer(contentsOf: filePath)
+                audioEffectPlayer?.play()
+            }
+            catch{
+                print(error)
+            }
         }
     }
 }
@@ -81,22 +51,70 @@ func playSoundEffect(list : [Card], index: Int){
 
 
 
+func playOneFart(){
+    if soundEffectIsOn {
+        if let filePath = Bundle.main.url(forResource: "fart3", withExtension: "wav")
+        {
+            do {
+                audioEffectPlayer = try AVAudioPlayer(contentsOf: filePath)
+                audioEffectPlayer?.play()
+            }
+            catch{
+                print(error)
+            }
+        }
+    }
+}
+    
+
+
+
+
+func playNextLevelAudio(){
+    if soundEffectIsOn {
+        if let filePath = Bundle.main.url(forResource: "nextLevel", withExtension: "wav")
+        {
+            do {
+                audioEffectPlayer = try AVAudioPlayer(contentsOf: filePath)
+                audioEffectPlayer?.play()
+            }
+            catch{
+                print(error)
+            }
+        }
+    }
+}
+
+
+func playJippieAudio(){
+    if soundEffectIsOn {
+        if let filePath = Bundle.main.url(forResource: "jippie", withExtension: "wav")
+        {
+            do {
+                jippiePlayer = try AVAudioPlayer(contentsOf: filePath)
+                jippiePlayer?.play()
+            }
+            catch{
+                print(error)
+            }
+        }
+    }
+}
 
 
 func playPipeSound(){
     let audioFileNames = ["pipeSound1", "pipeSound2", "pipeSound3"]
     let randomNr = Int(arc4random_uniform(3))
-    
     if soundEffectIsOn {
-        
-        if soundEffectIsOn{
-            
-            if let filePath = Bundle.main.path(forResource: audioFileNames[randomNr], ofType: "wav"){
-                soundURL = NSURL(fileURLWithPath: filePath)
+        if let filePath = Bundle.main.url(forResource: audioFileNames[randomNr], withExtension: "wav")
+        {
+            do {
+                pipeSoundPlayer = try AVAudioPlayer(contentsOf: filePath)
+                pipeSoundPlayer?.volume = 0.1
+                pipeSoundPlayer?.play()
             }
-            if let url = soundURL {
-                AudioServicesCreateSystemSoundID(url, &soundID)
-                AudioServicesPlaySystemSound(soundID)
+            catch{
+                print(error)
             }
         }
     }
@@ -104,21 +122,86 @@ func playPipeSound(){
 
 
 
+
+func playPlopInToilet(){
+    if soundEffectIsOn {
+        if let filePath = Bundle.main.url(forResource: "plop", withExtension: "wav")
+        {
+            do {
+                plopInToiletPlayer = try AVAudioPlayer(contentsOf: filePath)
+                plopInToiletPlayer?.volume = 0.7
+                plopInToiletPlayer?.play()
+            }
+            catch{
+                print(error)
+            }
+        }
+    }
+}
+
+
+
+
+
+func playFlushToiletAudio(){
+    
+    if soundEffectIsOn {
+        if let filePath = Bundle.main.url(forResource: "flushToilet", withExtension: "wav")
+        {
+            do {
+                flushToiletPlayer = try AVAudioPlayer(contentsOf: filePath)
+                flushToiletPlayer?.volume = 0.6
+                flushToiletPlayer?.play()
+                
+            }
+            catch{
+                print(error)
+            }
+            
+        }
+    }
+    
+}
+
+
+
+
+func playFlushToiletLongAudio(){
+    
+    if soundEffectIsOn {
+        if let filePath = Bundle.main.url(forResource: "flushToilet", withExtension: "wav")
+        {
+            do {
+                flushToiletPlayer = try AVAudioPlayer(contentsOf: filePath)
+                flushToiletPlayer?.volume = 0.6
+                flushToiletPlayer?.play()
+                
+            }
+            catch{
+                print(error)
+            }
+            
+        }
+    }
+    
+}
+
+
+
+
+
+
 func playBackgroundMusic(){
-    
-    
     
     if backgroundMusicIsOn{
         
-        let filePath = Bundle.main.url(forResource: "music", withExtension: "mp3")
-        
-        if let filePath = filePath{
+        if let filePath = Bundle.main.url(forResource: "music", withExtension: "mp3")
+        {
             
             do{
                 backgroundMusicPlayer = try AVAudioPlayer(contentsOf: filePath)
                 backgroundMusicPlayer?.numberOfLoops = -1
                 backgroundMusicPlayer?.volume = 0.1
-                backgroundMusicPlayer?.prepareToPlay()
                 backgroundMusicPlayer?.play()
                 firstTime = false
                 
@@ -140,17 +223,13 @@ func fadeBackgroundMusic(seconds: Double){
 }
 
 
+
+
+
+
 func stopBackgroundMusic(){
     if backgroundMusicIsOn{
         
         backgroundMusicPlayer?.stop()
     }
 }
-
-
-
-
-
-
-
-

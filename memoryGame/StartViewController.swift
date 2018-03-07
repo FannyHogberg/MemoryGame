@@ -27,9 +27,12 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
         self.initStartImageAnimation()      //prepair the blinking animation
 
-        if firstTime{                       //The music will not start from the beginning every time you load...
+        if firstTime{
             playBackgroundMusic()
         }
         

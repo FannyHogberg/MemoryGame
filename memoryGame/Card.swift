@@ -25,14 +25,38 @@ class Card {
         id = cardId
         image = UIImage(named: imageName)!
         soundFileName = soundName
-    }
         
+        if let filePath = Bundle.main.url(forResource: soundName, withExtension: "aiff"){
+            
+            do {
+                // Removed deprecated use of AVAudioSessionDelegate protocol
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try AVAudioSession.sharedInstance().setActive(true)
+                try audioPlayer = AVAudioPlayer(contentsOf: filePath as URL)
+                audioPlayer?.prepareToPlay()
+            }
+            catch {
+                print(error)
+            }
+            
+            
+        }
+    }
+    
+
         func playSound(){
             
+            
             if soundEffectIsOn{
+            
+                if (audioPlayer?.isPlaying)! {
+                audioPlayer?.stop()
+            }
+                
             audioPlayer?.play()
             }
         }
+    
     
     
     func flipCard(){
