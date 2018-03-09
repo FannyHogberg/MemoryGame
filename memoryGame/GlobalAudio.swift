@@ -20,6 +20,8 @@ var backgroundMusicPlayer: AVAudioPlayer?
 var audioEffectPlayer : AVAudioPlayer?
 var pipeSoundPlayer : AVAudioPlayer?
 
+private let musicSettingKey = "musicSetting"
+private let soundEffectKey = "soundEffectKey"
 
 
 func playCardSoundEffect(list : [Card], index: Int){
@@ -33,7 +35,7 @@ func playCardSoundEffect(list : [Card], index: Int){
         if let filePath = Bundle.main.url(forResource: list[index].soundFileName, withExtension: "aif"){
             do {
                 audioEffectPlayer = try AVAudioPlayer(contentsOf: filePath)
-                audioEffectPlayer?.volume = 0.9
+                audioEffectPlayer?.volume = 1
                 audioEffectPlayer?.prepareToPlay()
                 audioEffectPlayer?.play()
             }
@@ -61,7 +63,7 @@ func playPipeSound(){
         {
             do {
                 pipeSoundPlayer = try AVAudioPlayer(contentsOf: filePath)
-                pipeSoundPlayer?.volume = 0.25
+                pipeSoundPlayer?.volume = 0.45
                 pipeSoundPlayer?.prepareToPlay()
                 pipeSoundPlayer?.play()
             }
@@ -77,6 +79,7 @@ func playPipeSound(){
 
 func playBackgroundMusic(){
     
+    
     if backgroundMusicIsOn{
         
         if let filePath = Bundle.main.url(forResource: "music", withExtension: "mp3")
@@ -85,7 +88,7 @@ func playBackgroundMusic(){
             do{
                 backgroundMusicPlayer = try AVAudioPlayer(contentsOf: filePath)
                 backgroundMusicPlayer?.numberOfLoops = -1
-                backgroundMusicPlayer?.volume = 0.3
+                backgroundMusicPlayer?.volume = 0.5
                 backgroundMusicPlayer?.prepareToPlay()
                 backgroundMusicPlayer?.play()
                 firstTime = false
@@ -118,4 +121,44 @@ func stopBackgroundMusic(){
         
         backgroundMusicPlayer?.stop()
     }
+    
+}
+
+
+//MARK: - INIT AND SAVE SOUND EFFECTS SETTINGS
+
+func initialSoundEffectIsOn() -> Bool{
+    
+    let savedSoundSettings = UserDefaults.standard.object(forKey: soundEffectKey) as? Bool
+    if let setting = savedSoundSettings {
+        return setting
+    } else {
+        return true
+    }
+}
+
+func saveSettingsFor(SoundEffects: Bool) {
+    let defaults = UserDefaults.standard
+    defaults.set(SoundEffects, forKey: soundEffectKey)
+    defaults.synchronize()
+}
+
+
+
+
+//MARK: - INIT AND SAVE MUSIC SETTINGS
+func initialBackgroundMusicIsOn() -> Bool {
+    let savedMusicSetting = UserDefaults.standard.object(forKey: musicSettingKey) as? Bool
+    if let setting = savedMusicSetting {
+        return setting
+    } else {
+        return true
+    }
+}
+
+
+func saveSettingFor(music: Bool) {
+    let defaults = UserDefaults.standard
+    defaults.set(music, forKey: musicSettingKey)
+    defaults.synchronize()
 }

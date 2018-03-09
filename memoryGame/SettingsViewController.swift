@@ -15,17 +15,25 @@ class SettingsViewController: UIViewController {
     let offImage = UIImage(named: "noSound")
     let onImage = UIImage(named: "sound")
     
-    
-    
     @IBOutlet weak var musicButton: UIImageView!
-    
     @IBOutlet weak var audioButton: UIImageView!
     
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateImages()
+        
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    func updateImages(){
         
         if !backgroundMusicIsOn{
             musicButton.image = offImage
@@ -35,12 +43,6 @@ class SettingsViewController: UIViewController {
             audioButton.image = offImage
         }
         
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -50,19 +52,18 @@ class SettingsViewController: UIViewController {
         
         if  backgroundMusicIsOn
         {
-            UIView.transition(with: self.musicButton, duration: 0.5, options: .transitionCrossDissolve , animations: {
-                self.musicButton.image = self.offImage
-            }, completion: nil)
+            changeImage(imageview: musicButton, toImage: offImage)
             stopBackgroundMusic()
             backgroundMusicIsOn = false
+            saveSettingFor(music: backgroundMusicIsOn)
+            
         }
         else{
-            UIView.transition(with: self.musicButton, duration: 0.5, options: .transitionCrossDissolve , animations: {
-                self.musicButton.image = self.onImage
-            }, completion: nil)
             
+            changeImage(imageview: musicButton, toImage: onImage)
             backgroundMusicIsOn = true
             playBackgroundMusic()
+            saveSettingFor(music: backgroundMusicIsOn)
             
         }
         
@@ -73,35 +74,38 @@ class SettingsViewController: UIViewController {
         
         if soundEffectIsOn{
             
-            UIView.transition(with: self.audioButton, duration: 0.5, options: .transitionCrossDissolve , animations: {
-                self.audioButton.image = self.offImage
-            }, completion: nil)
-            
+            changeImage(imageview: audioButton, toImage: offImage)
             soundEffectIsOn = false
+            saveSettingsFor(SoundEffects: soundEffectIsOn)
+
         }
         else{
             
-            UIView.transition(with: self.audioButton, duration: 0.5, options: .transitionCrossDissolve , animations: {
-                self.audioButton.image = self.onImage
-            }, completion: nil)
             
+            changeImage(imageview: audioButton, toImage: onImage)
             soundEffectIsOn = true
+            saveSettingsFor(SoundEffects: soundEffectIsOn)
             
         }
+        
+    }
+    
+
+    func changeImage(imageview: UIImageView, toImage : UIImage?){
+        
+        UIView.transition(with: imageview, duration: 0.5, options: .transitionCrossDissolve , animations: {
+            imageview.image = toImage
+        }, completion: nil)
         
     }
     
     
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    @IBAction func goToHomeScreen(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
     
 }

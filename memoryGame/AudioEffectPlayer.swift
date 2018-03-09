@@ -17,16 +17,16 @@ enum audioName : String {
     case jippie = "jippie"
     case nextLevel = "nextLevel"
     case fart = "fart3"
-
+    
 }
 
-    class AudioEffectPlayer {
+class AudioEffectPlayer {
     
-
-        
+    
+    
     var audioPlayer : AVAudioPlayer?
     
-        init(soundName: audioName, volume: Float){
+    init(soundName: audioName, volume: Float){
         
         if let filePath = Bundle.main.url(forResource: soundName.rawValue, withExtension: "aif"){
             
@@ -47,31 +47,31 @@ enum audioName : String {
             
         }
         
-        }
-        
-        
-        
-        
-        func playSound(){
-            
-            if soundEffectIsOn{
-                if let player = audioPlayer{
-                    if player.isPlaying{
-                        player.currentTime = 0
-                        player.play()
-                    }
-                    else{
-                        player.play()
-                        
-                    }
-                }
-            }
-            
-        }
-        
-        
     }
     
     
     
- 
+    
+    func playSound(){
+        
+        if soundEffectIsOn{
+            if let player = audioPlayer{
+                if player.isPlaying{
+                    player.currentTime = 0
+                    player.play()
+                }
+                else{
+                    player.play()
+                    
+                }
+            }
+        }
+        
+    }
+    
+    
+}
+
+
+
+

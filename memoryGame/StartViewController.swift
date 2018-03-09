@@ -27,73 +27,86 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
+        settingsBtn.alpha = 0           //Hide
+        containerView.alpha = 0         //Hide
         
         self.initStartImageAnimation()      //prepair the blinking animation
 
-        if firstTime{
-            playBackgroundMusic()
-        }
+        self.fadeInStartViewAndStartBlink()
+        
+        self.reloadAudioSettingsAndPlay()
         
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        settingsBtn.alpha = 0
-        containerView.alpha = 0
-        
+        animateArrow()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    
+    @IBAction func preformSegue(_ sender: UITapGestureRecognizer) {
+        stopTimer()
+        performSegue(withIdentifier: "playGame", sender: self)
         
+        
+    }
+    
+    
+    func reloadAudioSettingsAndPlay(){
+        
+        backgroundMusicIsOn = initialBackgroundMusicIsOn()
+        if firstTime{
+            playBackgroundMusic()
+        }
+        
+        soundEffectIsOn = initialSoundEffectIsOn()
+        
+    }
+    
+    
+    
+    func animateArrow(){
+        UIView.animate(withDuration: 1, delay: 0.0, options: [.repeat, .autoreverse, .allowUserInteraction], animations: {
+            
+            self.arrow.center.x += 40
 
+            
+        }, completion: {_ in
+            self.arrow.center.x -= 40
+        })
+    }
+    
+    
+    
+    //Fade in and start blink animation when done.
+    func fadeInStartViewAndStartBlink(){
+        
         //Fade in the view
-        UIView.animate(withDuration: 2, delay: 0, options: .allowUserInteraction, animations: {
+        UIView.animate(withDuration: 1.5, delay: 0, options: .allowUserInteraction, animations: {
             
             self.containerView.alpha = 1
             self.settingsBtn.alpha = 1
             
         }) { (finished) in
-
-            self.startAnimateStartImage()             //Start blink
+            
+            self.startBlinkingAnimation()             //Start blink
             
         }
         
-
-        //Arrow on repeat...
-        UIView.animate(withDuration: 1, delay: 0.7, options: [.repeat, .autoreverse, .allowUserInteraction], animations: {
-            
-            self.arrow.center.x += 30
-            
-            
-        }, completion: nil)
-        
-        
-        
     }
     
-    
-    func startAnimateStartImage(){
-        self.startImage.startAnimating()    //for first time
-        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { _ in
-            
-            self.startImage.startAnimating()
-            
-            
-        }
-    }
+    //MARK:- BLINKING ANIMINATION
     
     //put the images in the array...
     func initStartImageAnimation(){
@@ -115,17 +128,17 @@ class StartViewController: UIViewController {
         startImage.animationRepeatCount = 2
     }
     
-    
-
-    
-    @IBAction func preformSegue(_ sender: UITapGestureRecognizer) {
-        stopTimer()
-        performSegue(withIdentifier: "playGame", sender: self)
-        
-        
+    func startBlinkingAnimation(){
+        self.startImage.startAnimating()    //for first time
+        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { _ in
+            
+            self.startImage.startAnimating()
+            
+            
+        }
     }
-    
-    
+
+    //Timer for blinking animation
     func stopTimer(){
         
         if let timer = timer{

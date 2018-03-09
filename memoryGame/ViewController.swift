@@ -1045,7 +1045,6 @@ class ViewController: UIViewController, CAAnimationDelegate{
     }
     
     
-    
     func showTimerResults(){
         
         timerResults.text = "\(NSLocalizedString ("TIMER_RESULTS", comment: "")) \(String(format:"%.02f", countUptimer.time))"
@@ -1212,9 +1211,9 @@ class ViewController: UIViewController, CAAnimationDelegate{
     func initAudioPlayers(){
         audioFlush = AudioEffectPlayer(soundName: .flushToilet, volume: 1)
         audioFlushLong = AudioEffectPlayer(soundName: .FlushToiletLong, volume: 1)
-        audioPlop = AudioEffectPlayer(soundName: .plop, volume: 0.8)
-        audioJippie = AudioEffectPlayer(soundName: .jippie, volume: 0.9)
-        audioNextLevel = AudioEffectPlayer(soundName: .nextLevel, volume: 0.9)
+        audioPlop = AudioEffectPlayer(soundName: .plop, volume: 1)
+        audioJippie = AudioEffectPlayer(soundName: .jippie, volume: 0.8)
+        audioNextLevel = AudioEffectPlayer(soundName: .nextLevel, volume: 1)
         audioScore = AudioEffectPlayer(soundName: .fart, volume: 1)
     }
     
