@@ -24,36 +24,32 @@ private let musicSettingKey = "musicSetting"
 private let soundEffectKey = "soundEffectKey"
 
 
-func playCardSoundEffect(list : [Card], index: Int){
+func playCardSoundEffect(card: Card){
     
-    if soundEffectIsOn{
+    if soundEffectIsOn {
         if let player = audioEffectPlayer{
             if player.isPlaying{
                 player.stop()
             }
         }
-        if let filePath = Bundle.main.url(forResource: list[index].soundFileName, withExtension: "aif"){
+        if let filePath = Bundle.main.url(forResource: card.soundFileName, withExtension: "aif") {
             do {
                 audioEffectPlayer = try AVAudioPlayer(contentsOf: filePath)
                 audioEffectPlayer?.volume = 1
                 audioEffectPlayer?.prepareToPlay()
                 audioEffectPlayer?.play()
             }
-            catch{
+            catch {
                 print(error)
             }
         }
     }
 }
 
-
-
-
 func playPipeSound(){
     let audioFileNames = ["pipeSound1", "pipeSound2", "pipeSound3"]
     let randomNr = Int(arc4random_uniform(3))
     if soundEffectIsOn {
-
         if let player = pipeSoundPlayer{
             if player.isPlaying{
                 player.stop()
@@ -74,25 +70,19 @@ func playPipeSound(){
     }
 }
 
-
-
-
 func playBackgroundMusic(){
-    
     
     if backgroundMusicIsOn{
         
         if let filePath = Bundle.main.url(forResource: "music", withExtension: "mp3")
         {
-            
-            do{
+            do {
                 backgroundMusicPlayer = try AVAudioPlayer(contentsOf: filePath)
                 backgroundMusicPlayer?.numberOfLoops = -1
                 backgroundMusicPlayer?.volume = 0.5
                 backgroundMusicPlayer?.prepareToPlay()
                 backgroundMusicPlayer?.play()
                 firstTime = false
-                
             }
             catch{
                 print("file not found")
@@ -103,18 +93,11 @@ func playBackgroundMusic(){
     }
 }
 
-
-
 func fadeBackgroundMusic(seconds: Double){
     if backgroundMusicIsOn{
         backgroundMusicPlayer?.setVolume(0.0, fadeDuration: seconds)
     }
 }
-
-
-
-
-
 
 func stopBackgroundMusic(){
     if backgroundMusicIsOn{

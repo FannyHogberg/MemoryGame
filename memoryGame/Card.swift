@@ -12,12 +12,16 @@ class Card {
     
     let id : Int
     let image : UIImage
-    let backImage = UIImage(named: "cardBack1")
+    let backImage = UIImage(named: "cardBack1") //remove
     let soundFileName : String
-    var isFlipped : Bool = false
+    var isFlipped : Bool = false {
+        didSet {
+            if isFlipped == true {
+                flippedCounter += 1
+            }
+        }
+    }
     var flippedCounter = 0
-    
-
     
     init(cardId: Int, imageName: String, soundName: String) {
         id = cardId
@@ -25,26 +29,17 @@ class Card {
         soundFileName = soundName
         
     }
-     
     
-    func flipCard(){
-        if isFlipped == true{
-            isFlipped = false
-        }
-        else{
-            isFlipped = true
-            flippedCounter += 1
-        }
+    func flipCard() {
+        isFlipped = !isFlipped
     }
     
-    func setIsFlippedToFalse(){
+    func setIsFlippedToFalse() {
         isFlipped = false
     }
-    
     
     func resetCard(){
         isFlipped = false
         flippedCounter = 0
     }
-    
 }

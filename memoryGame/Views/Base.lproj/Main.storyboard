@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VmT-fr-p6B">
-    <device id="retina3_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VmT-fr-p6B">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Baseline standard spacing" minToolsVersion="9.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +11,7 @@
         <!--Start View Controller-->
         <scene sceneID="5RY-D2-kJq">
             <objects>
-                <viewController id="VmT-fr-p6B" customClass="StartViewController" customModule="memoryGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VmT-fr-p6B" customClass="StartViewController" customModule="Flush_The_Toilet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FWb-D8-zs7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,13 +41,13 @@
                                         </variation>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cardBack1" translatesAutoresizingMaskIntoConstraints="NO" id="4pu-mN-n6o">
-                                        <rect key="frame" x="34" y="96.5" width="156.5" height="137.5"/>
+                                        <rect key="frame" x="33.5" y="96.5" width="157" height="138.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="4pu-mN-n6o" secondAttribute="height" multiplier="17:15" id="Hqf-OE-3B7"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="6jJ-My-EKd">
-                                        <rect key="frame" x="98.5" y="251" width="49" height="44.5"/>
+                                        <rect key="frame" x="99" y="252" width="48.5" height="45.5"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6jJ-My-EKd" secondAttribute="height" multiplier="15:14" id="Z8c-By-cuc"/>
@@ -79,7 +74,7 @@
                                 </connections>
                             </view>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="settings" translatesAutoresizingMaskIntoConstraints="NO" id="0E6-Ie-Xn3">
-                                <rect key="frame" x="251.5" y="36" width="48" height="29.5"/>
+                                <rect key="frame" x="251" y="36" width="48" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -87,6 +82,7 @@
                                 </connections>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="SkB-qY-F7D"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="ICe-jN-pNB" secondAttribute="bottom" id="5s0-EX-C4y"/>
@@ -98,20 +94,18 @@
                             <constraint firstItem="xV1-Oq-2Gb" firstAttribute="height" secondItem="FWb-D8-zs7" secondAttribute="height" multiplier="0.6" id="sMd-pl-B0l"/>
                             <constraint firstItem="ICe-jN-pNB" firstAttribute="leading" secondItem="FWb-D8-zs7" secondAttribute="leading" id="z6a-iX-TLG"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="SkB-qY-F7D"/>
                     </view>
+                    <navigationItem key="navigationItem" id="NpA-Fh-Esa"/>
                     <connections>
                         <outlet property="arrow" destination="6jJ-My-EKd" id="XfC-zH-hRm"/>
-                        <outlet property="containerView" destination="xV1-Oq-2Gb" id="pYE-SK-CiQ"/>
-                        <outlet property="settingsBtn" destination="0E6-Ie-Xn3" id="ZWZ-vy-XiP"/>
                         <outlet property="startImage" destination="4pu-mN-n6o" id="v1A-qq-UtR"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="playGame" id="4ZH-5R-VT1"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="playGame" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="4ZH-5R-VT1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b3i-Cz-Izv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="iRq-Ow-7j9" userLabel="settings Tap">
                     <connections>
-                        <segue destination="sEu-LD-9GA" kind="presentation" modalTransitionStyle="crossDissolve" id="qoQ-v7-YqL"/>
+                        <segue destination="sEu-LD-9GA" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="qoQ-v7-YqL"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="ajy-zB-cli" userLabel="Start Game Tap">
@@ -125,7 +119,7 @@
         <!--Settings View Controller-->
         <scene sceneID="A9b-zH-3k0">
             <objects>
-                <viewController id="sEu-LD-9GA" customClass="SettingsViewController" customModule="memoryGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sEu-LD-9GA" customClass="SettingsViewController" customModule="Flush_The_Toilet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xny-eG-Gvz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,9 +150,6 @@
                                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="sound" translatesAutoresizingMaskIntoConstraints="NO" id="AG2-9I-00U">
                                                 <rect key="frame" x="162.5" y="0.0" width="35.5" height="39.5"/>
                                                 <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="PvG-kx-qkH" appends="YES" id="ujr-oz-VGh"/>
-                                                </connections>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -184,9 +175,6 @@
                                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" image="sound" translatesAutoresizingMaskIntoConstraints="NO" id="Th6-xM-AUF">
                                                 <rect key="frame" x="162.5" y="0.0" width="35.5" height="39.5"/>
                                                 <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="yUw-S0-VRn" appends="YES" id="7OO-1q-0fs"/>
-                                                </connections>
                                             </imageView>
                                         </subviews>
                                     </stackView>
@@ -200,7 +188,7 @@
                                 </constraints>
                             </stackView>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="6uR-OK-5b7">
-                                <rect key="frame" x="30" y="36" width="35.5" height="30"/>
+                                <rect key="frame" x="30" y="36" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -208,12 +196,13 @@
                                 </connections>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lookingUp" translatesAutoresizingMaskIntoConstraints="NO" id="isP-p8-X0d">
-                                <rect key="frame" x="61" y="285.5" width="198" height="192"/>
+                                <rect key="frame" x="61" y="285.5" width="198" height="191.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="isP-p8-X0d" secondAttribute="height" multiplier="30:29" id="K7O-Iy-9Hf"/>
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="nCc-tX-OGA"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -230,7 +219,6 @@
                             <constraint firstAttribute="bottom" secondItem="2D4-Nf-aS1" secondAttribute="bottom" id="lMo-el-tKj"/>
                             <constraint firstItem="2D4-Nf-aS1" firstAttribute="leading" secondItem="Xny-eG-Gvz" secondAttribute="leading" id="mD2-c9-HJ7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="nCc-tX-OGA"/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="P9Q-4j-VzN" appends="YES" id="fm2-ly-E7f"/>
                         </connections>
@@ -273,7 +261,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="memoryGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Flush_The_Toilet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -284,16 +272,16 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7b-OV-t89" userLabel="level1">
                                 <rect key="frame" x="32" y="96" width="256" height="240"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpN-Ha-KNN">
-                                        <rect key="frame" x="6" y="6.5" width="114" height="82"/>
+                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpN-Ha-KNN" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="6" y="7" width="114" height="82"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c89-nt-q89"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zno-dO-gyE">
-                                        <rect key="frame" x="135" y="5.5" width="113.5" height="82.5"/>
+                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zno-dO-gyE" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="135" y="6" width="113" height="82"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <directionalEdgeInsets key="directionalLayoutMargins" top="8" leading="8" bottom="8" trailing="8"/>
                                         <state key="normal" image="cardBack1"/>
@@ -301,7 +289,7 @@
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oyt-3e-ako"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbM-HR-aKL">
+                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbM-HR-aKL" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
                                         <rect key="frame" x="6" y="151" width="114" height="82"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
@@ -309,8 +297,8 @@
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UkU-CW-pro"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="4" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEJ-ze-Tth">
-                                        <rect key="frame" x="135" y="158.5" width="113.5" height="81.5"/>
+                                    <button hidden="YES" opaque="NO" tag="4" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DEJ-ze-Tth" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="135" y="158" width="113" height="82"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
@@ -322,48 +310,48 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tee-Bp-Vxy" userLabel="level2">
                                 <rect key="frame" x="32" y="72" width="256" height="288"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vre-vC-PwQ">
-                                        <rect key="frame" x="26.5" y="10.5" width="93" height="79.5"/>
+                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vre-vC-PwQ" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="26" y="10" width="93" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="boa-jM-627"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGr-7B-esF">
-                                        <rect key="frame" x="148.5" y="10.5" width="92.5" height="79.5"/>
+                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGr-7B-esF" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="148" y="10" width="93" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rqh-NW-Ed8"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzN-rb-N5d">
-                                        <rect key="frame" x="6" y="104" width="91.5" height="79.5"/>
+                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LzN-rb-N5d" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="6" y="104" width="91" height="79"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qrV-PT-MTG"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="4" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phJ-SY-eF3">
-                                        <rect key="frame" x="163" y="104.5" width="92.5" height="79"/>
+                                    <button hidden="YES" opaque="NO" tag="4" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phJ-SY-eF3" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="163" y="104" width="92" height="79"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MHb-US-RsI"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="5" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMJ-0o-pzo">
-                                        <rect key="frame" x="26.5" y="196.5" width="93" height="80"/>
+                                    <button hidden="YES" opaque="NO" tag="5" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMJ-0o-pzo" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="26" y="197" width="93" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DnT-2P-blF"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="6" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwC-ip-1jA">
-                                        <rect key="frame" x="148.5" y="196.5" width="92.5" height="80"/>
+                                    <button hidden="YES" opaque="NO" tag="6" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwC-ip-1jA" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="148" y="197" width="93" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
@@ -375,80 +363,80 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9lH-Pf-49A" userLabel="level3">
                                 <rect key="frame" x="32" y="84" width="256" height="288"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pp4-SW-3ag">
-                                        <rect key="frame" x="34.5" y="-1" width="77.5" height="66.5"/>
+                                    <button hidden="YES" opaque="NO" tag="1" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pp4-SW-3ag" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="34" y="-1" width="78" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KC6-xx-FTk"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zud-sw-v08">
-                                        <rect key="frame" x="128.5" y="5.5" width="78" height="66.5"/>
+                                    <button hidden="YES" opaque="NO" tag="2" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zud-sw-v08" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="128" y="5" width="78" height="67"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xOZ-M4-jR6"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qod-lH-TbO">
-                                        <rect key="frame" x="0.0" y="80.5" width="77" height="66.5"/>
+                                    <button hidden="YES" opaque="NO" tag="3" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qod-lH-TbO" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="81" width="77" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pi9-mS-Sqi"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="4" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIZ-Wi-K27">
-                                        <rect key="frame" x="88.5" y="75" width="77" height="66.5"/>
+                                    <button hidden="YES" opaque="NO" tag="4" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gIZ-Wi-K27" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="88" y="75" width="77" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7p-AY-ted"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="5" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFR-3H-O3B">
-                                        <rect key="frame" x="181" y="72.5" width="77.5" height="66.5"/>
+                                    <button hidden="YES" opaque="NO" tag="5" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFR-3H-O3B" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="181" y="72" width="77" height="67"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Vff-P0-ab4"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="6" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8U-Gd-0zd">
-                                        <rect key="frame" x="-6" y="153" width="78" height="66.5"/>
+                                    <button hidden="YES" opaque="NO" tag="6" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8U-Gd-0zd" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="-6" y="153" width="78" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F7F-jn-4gG"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="7" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fh5-6L-V6O">
-                                        <rect key="frame" x="85.5" y="147" width="77" height="66.5"/>
+                                    <button hidden="YES" opaque="NO" tag="7" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fh5-6L-V6O" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="85" y="147" width="77" height="67"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FFw-6O-gid"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="8" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="st2-FV-s3o">
-                                        <rect key="frame" x="178" y="155.5" width="77.5" height="66.5"/>
+                                    <button hidden="YES" opaque="NO" tag="8" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="st2-FV-s3o" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="178" y="156" width="77" height="66"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WJw-PC-DEw"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="9" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMt-lW-SXT">
-                                        <rect key="frame" x="45" y="213.5" width="78" height="66.5"/>
+                                    <button hidden="YES" opaque="NO" tag="9" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wMt-lW-SXT" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="45" y="213" width="78" height="67"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
                                             <action selector="btnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yoz-xh-ZLe"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" opaque="NO" tag="10" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSC-BG-and">
-                                        <rect key="frame" x="137" y="216.5" width="77.5" height="66.5"/>
+                                    <button hidden="YES" opaque="NO" tag="10" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSC-BG-and" customClass="CardButton" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="137" y="216" width="77" height="67"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="cardBack1"/>
                                         <connections>
@@ -467,16 +455,16 @@
                                         </accessibility>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toiletBottom1" translatesAutoresizingMaskIntoConstraints="NO" id="Bnl-79-AUu">
-                                        <rect key="frame" x="0.0" y="72" width="144" height="71.5"/>
+                                        <rect key="frame" x="0.0" y="72" width="144" height="72"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                         </accessibility>
                                     </imageView>
-                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xK-zg-fxh" userLabel="Toilet Lid view">
-                                        <rect key="frame" x="0.0" y="-1" width="114" height="144.5"/>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xK-zg-fxh" userLabel="Toilet Lid view" customClass="ToiletLidView" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="114" height="144"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="toiletLid" translatesAutoresizingMaskIntoConstraints="NO" id="bdd-9o-CYJ">
-                                                <rect key="frame" x="0.0" y="1" width="144" height="72"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="144" height="72"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
                                                 </accessibility>
@@ -511,31 +499,21 @@
                                 </constraints>
                             </view>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="dj8-ut-hPI">
-                                <rect key="frame" x="30" y="36" width="35.5" height="30"/>
+                                <rect key="frame" x="30" y="36" width="35" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="1vZ-ZC-Lbx" appends="YES" id="GO9-Rb-yi5"/>
                                 </connections>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pipe1" translatesAutoresizingMaskIntoConstraints="NO" id="HLF-zw-9pb">
-                                <rect key="frame" x="-367.5" y="20" width="362.5" height="96"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HLF-zw-9pb" customClass="PipeImageView" customModule="Flush_The_Toilet" customModuleProvider="target">
+                                <rect key="frame" x="-367.5" y="0.0" width="362.5" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HLF-zw-9pb" secondAttribute="height" multiplier="185:49" id="VGe-nR-j41"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LEVEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Oxa-TB-kqk">
-                                <rect key="frame" x="1000" y="254" width="414" height="228"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
-                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="63"/>
-                                </variation>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylX-Q4-CQu" userLabel="flushButton">
-                                <rect key="frame" x="6.5" y="402" width="115" height="86"/>
+                                <rect key="frame" x="6.5" y="401.5" width="115" height="86.5"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="rVp-4G-CEE" appends="YES" id="a2M-MX-lFk"/>
@@ -548,151 +526,6 @@
                                     <outletCollection property="gestureRecognizers" destination="FFj-V5-cah" appends="YES" id="Uaf-Zr-BMa"/>
                                 </connections>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPC-JP-g9R" userLabel="endOfGameView">
-                                <rect key="frame" x="29" y="96" width="262" height="288"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FnK-iP-dLF">
-                                        <rect key="frame" x="30" y="20" width="202" height="248"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOU DID IT!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Q4U-9K-hKG">
-                                                <rect key="frame" x="0.0" y="0.0" width="202" height="41.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <variation key="heightClass=regular-widthClass=regular">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                                </variation>
-                                            </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Yfb-yN-MUb" userLabel="Stack View 1">
-                                                <rect key="frame" x="0.0" y="41.5" width="202" height="41"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6m-wM-WUT">
-                                                        <rect key="frame" x="0.0" y="0.0" width="81" height="41"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <variation key="heightClass=regular-widthClass=regular">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                                        </variation>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="grayToScore" translatesAutoresizingMaskIntoConstraints="NO" id="2rA-OB-fuW">
-                                                        <rect key="frame" x="81" y="0.0" width="40" height="41"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grayToScore" translatesAutoresizingMaskIntoConstraints="NO" id="PyX-G7-r4w">
-                                                        <rect key="frame" x="121" y="0.0" width="40.5" height="41"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grayToScore" translatesAutoresizingMaskIntoConstraints="NO" id="lzF-xd-eM4">
-                                                        <rect key="frame" x="161.5" y="0.0" width="40.5" height="41"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="d6m-wM-WUT" firstAttribute="width" secondItem="Yfb-yN-MUb" secondAttribute="width" multiplier="0.4" id="MqX-f9-PBD"/>
-                                                    <constraint firstItem="lzF-xd-eM4" firstAttribute="width" secondItem="PyX-G7-r4w" secondAttribute="width" id="qbC-Uj-qxC"/>
-                                                    <constraint firstItem="PyX-G7-r4w" firstAttribute="width" secondItem="2rA-OB-fuW" secondAttribute="width" id="ztL-4G-OZT"/>
-                                                </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="5PK-oe-R4e" userLabel="Stack View 2">
-                                                <rect key="frame" x="0.0" y="82.5" width="202" height="41.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5y-mG-5ND">
-                                                        <rect key="frame" x="0.0" y="0.0" width="81" height="41.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <variation key="heightClass=regular-widthClass=regular">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                                        </variation>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grayToScore" translatesAutoresizingMaskIntoConstraints="NO" id="taG-vW-zY8">
-                                                        <rect key="frame" x="81" y="0.0" width="40" height="41.5"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grayToScore" translatesAutoresizingMaskIntoConstraints="NO" id="JeP-7I-H5F">
-                                                        <rect key="frame" x="121" y="0.0" width="40.5" height="41.5"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grayToScore" translatesAutoresizingMaskIntoConstraints="NO" id="nJL-Ek-EyJ">
-                                                        <rect key="frame" x="161.5" y="0.0" width="40.5" height="41.5"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="nJL-Ek-EyJ" firstAttribute="width" secondItem="JeP-7I-H5F" secondAttribute="width" id="551-up-ks0"/>
-                                                    <constraint firstItem="JeP-7I-H5F" firstAttribute="width" secondItem="taG-vW-zY8" secondAttribute="width" id="VcB-aC-Cph"/>
-                                                </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="kQT-CY-B8f" userLabel="Stack View 3">
-                                                <rect key="frame" x="0.0" y="124" width="202" height="41.5"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcJ-gD-w4r">
-                                                        <rect key="frame" x="0.0" y="0.0" width="81" height="41.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <variation key="heightClass=regular-widthClass=regular">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                                        </variation>
-                                                    </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grayToScore" translatesAutoresizingMaskIntoConstraints="NO" id="1jv-Jt-Top">
-                                                        <rect key="frame" x="81" y="0.0" width="40" height="41.5"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grayToScore" translatesAutoresizingMaskIntoConstraints="NO" id="abY-Es-DKE">
-                                                        <rect key="frame" x="121" y="0.0" width="40.5" height="41.5"/>
-                                                    </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grayToScore" translatesAutoresizingMaskIntoConstraints="NO" id="mXS-YN-Klp">
-                                                        <rect key="frame" x="161.5" y="0.0" width="40.5" height="41.5"/>
-                                                    </imageView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="mXS-YN-Klp" firstAttribute="width" secondItem="abY-Es-DKE" secondAttribute="width" id="JCw-xO-Xec"/>
-                                                    <constraint firstItem="abY-Es-DKE" firstAttribute="width" secondItem="1jv-Jt-Top" secondAttribute="width" id="xh6-44-oSf"/>
-                                                </constraints>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLN-Sg-W1Y">
-                                                <rect key="frame" x="0.0" y="165.5" width="202" height="41"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="8" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zYZ-Xb-RgA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="202" height="41"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <variation key="heightClass=regular-widthClass=regular">
-                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                        </variation>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
-                                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playAgain" translatesAutoresizingMaskIntoConstraints="NO" id="W6O-ZE-sbc" userLabel="reset">
-                                                <rect key="frame" x="0.0" y="206.5" width="202" height="41.5"/>
-                                                <gestureRecognizers/>
-                                                <connections>
-                                                    <outletCollection property="gestureRecognizers" destination="Qe1-Gf-Zjn" appends="YES" id="aC4-up-dGP"/>
-                                                </connections>
-                                            </imageView>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="H5y-mG-5ND" firstAttribute="width" secondItem="d6m-wM-WUT" secondAttribute="width" id="233-dC-Lcs"/>
-                                            <constraint firstItem="taG-vW-zY8" firstAttribute="width" secondItem="2rA-OB-fuW" secondAttribute="width" id="f07-qy-yIW"/>
-                                            <constraint firstItem="qcJ-gD-w4r" firstAttribute="width" secondItem="H5y-mG-5ND" secondAttribute="width" id="ftd-Zv-dBT"/>
-                                            <constraint firstItem="1jv-Jt-Top" firstAttribute="width" secondItem="taG-vW-zY8" secondAttribute="width" id="oce-YD-FVa"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="FnK-iP-dLF" firstAttribute="leading" secondItem="NPC-JP-g9R" secondAttribute="leading" constant="30" id="Jty-Ad-uIb">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="50"/>
-                                    </constraint>
-                                    <constraint firstAttribute="bottom" secondItem="FnK-iP-dLF" secondAttribute="bottom" constant="20" id="ard-Jb-f2S"/>
-                                    <constraint firstAttribute="trailing" secondItem="FnK-iP-dLF" secondAttribute="trailing" constant="30" id="gut-1X-XF6">
-                                        <variation key="heightClass=regular-widthClass=regular" constant="50"/>
-                                    </constraint>
-                                    <constraint firstItem="FnK-iP-dLF" firstAttribute="top" secondItem="NPC-JP-g9R" secondAttribute="top" constant="20" id="yYD-rt-EOR"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igW-qE-lV7" userLabel="quitGameViewBlur">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qSS-Xc-bTO">
@@ -703,7 +536,7 @@
                                             <rect key="frame" x="40" y="168" width="240" height="144"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure?  😢" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JjK-fu-cSC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="72.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="72"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -712,10 +545,10 @@
                                                     </variation>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Teo-LL-aVl">
-                                                    <rect key="frame" x="0.0" y="71.5" width="240" height="72.5"/>
+                                                    <rect key="frame" x="0.0" y="72" width="240" height="72"/>
                                                     <subviews>
                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👍🏽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YYQ-LZ-6aZ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="119.5" height="72.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="72"/>
                                                             <gestureRecognizers/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                             <nil key="textColor"/>
@@ -728,7 +561,7 @@
                                                             </connections>
                                                         </label>
                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👎🏽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EOZ-6n-Eck">
-                                                            <rect key="frame" x="119.5" y="0.0" width="120.5" height="72.5"/>
+                                                            <rect key="frame" x="120" y="0.0" width="120" height="72"/>
                                                             <gestureRecognizers/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                                             <nil key="textColor"/>
@@ -746,7 +579,7 @@
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                            <color key="backgroundColor" systemColor="lightTextColor"/>
                                             <constraints>
                                                 <constraint firstItem="JjK-fu-cSC" firstAttribute="top" secondItem="lbf-8k-5Dr" secondAttribute="top" id="34n-J9-r7e"/>
                                                 <constraint firstItem="JjK-fu-cSC" firstAttribute="leading" secondItem="lbf-8k-5Dr" secondAttribute="leading" id="8RF-rI-z2y"/>
@@ -773,6 +606,7 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
@@ -790,15 +624,10 @@
                             <constraint firstItem="9lH-Pf-49A" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="I3g-sY-e5Z"/>
                             <constraint firstItem="ylX-Q4-CQu" firstAttribute="baseline" secondItem="l5R-TW-0eU" secondAttribute="baseline" id="IJF-Oi-Iru"/>
                             <constraint firstItem="r7b-OV-t89" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="Ilt-FJ-u4S"/>
-                            <constraint firstItem="NPC-JP-g9R" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.6" id="Min-yB-8Xn">
-                                <variation key="heightClass=regular-widthClass=compact" constant="70"/>
-                            </constraint>
                             <constraint firstAttribute="bottom" secondItem="igW-qE-lV7" secondAttribute="bottom" id="Mn8-zI-lVI"/>
                             <constraint firstItem="r7b-OV-t89" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nj3-BP-Q35"/>
-                            <constraint firstItem="NPC-JP-g9R" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Oa7-ag-qRN"/>
                             <constraint firstItem="HLF-zw-9pb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="QiC-YD-uid"/>
                             <constraint firstAttribute="trailing" secondItem="igW-qE-lV7" secondAttribute="trailing" id="S4j-MY-p2J"/>
-                            <constraint firstItem="NPC-JP-g9R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XZM-eC-1eu"/>
                             <constraint firstItem="vxp-hn-xrN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZVU-JQ-Y0L"/>
                             <constraint firstItem="WYT-Nk-ICJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bsX-d5-Dxf"/>
                             <constraint firstItem="Tee-Bp-Vxy" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="c7o-XT-y6n"/>
@@ -818,35 +647,22 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="80"/>
                             </constraint>
                             <constraint firstItem="Tee-Bp-Vxy" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="tbo-i0-Rt1"/>
-                            <constraint firstItem="NPC-JP-g9R" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="ymo-IY-zHQ"/>
                             <constraint firstItem="ylX-Q4-CQu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.4" id="zOn-N7-n9U"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="endOfGameLevel1Label" destination="d6m-wM-WUT" id="xtc-9L-anR"/>
-                        <outlet property="endOfGameLevel2Label" destination="H5y-mG-5ND" id="uwS-Jt-dgn"/>
-                        <outlet property="endOfGameLevel3Label" destination="qcJ-gD-w4r" id="ri1-Uw-8Wy"/>
-                        <outlet property="endOfGameView" destination="NPC-JP-g9R" id="MFk-sN-K1L"/>
                         <outlet property="level1" destination="r7b-OV-t89" id="str-hg-ec0"/>
                         <outlet property="level2" destination="Tee-Bp-Vxy" id="34H-Ab-8Ao"/>
                         <outlet property="level3" destination="9lH-Pf-49A" id="LJt-jI-y92"/>
-                        <outlet property="nextLevelText" destination="Oxa-TB-kqk" id="vRq-sX-Du0"/>
                         <outlet property="pipe" destination="HLF-zw-9pb" id="5GJ-lV-Eni"/>
                         <outlet property="quitEndOfGameViewGameAnswerYes" destination="YYQ-LZ-6aZ" id="yk8-XJ-AwR"/>
                         <outlet property="quitGameAnswerNo" destination="EOZ-6n-Eck" id="97v-FK-Oim"/>
                         <outlet property="quitGameVisualEffectView" destination="igW-qE-lV7" id="8Ke-NO-64O"/>
                         <outlet property="quitViewWithText" destination="lbf-8k-5Dr" id="QYQ-Xq-LPp"/>
-                        <outlet property="resetButton" destination="W6O-ZE-sbc" id="QZc-SR-ato"/>
-                        <outlet property="scoreLevel1Stack" destination="Yfb-yN-MUb" id="cZC-ZC-l7P"/>
-                        <outlet property="scoreLevel2Stack" destination="5PK-oe-R4e" id="DT3-Y5-2t8"/>
-                        <outlet property="scoreLevel3Stack" destination="kQT-CY-B8f" id="cuK-z2-BST"/>
-                        <outlet property="timerResults" destination="zYZ-Xb-RgA" id="HO7-KA-kC7"/>
                         <outlet property="toiletBottom" destination="Bnl-79-AUu" id="mcD-aU-h3f"/>
                         <outlet property="toiletLid" destination="9xK-zg-fxh" id="wQF-lu-gTg"/>
                         <outlet property="toiletView" destination="vxp-hn-xrN" id="G37-Uy-D2O"/>
-                        <outlet property="youDidItLabel" destination="Q4U-9K-hKG" id="esn-uw-PiI"/>
-                        <segue destination="VmT-fr-p6B" kind="show" identifier="goToStart" id="XZ7-SS-lCs"/>
+                        <segue destination="VmT-fr-p6B" kind="presentation" identifier="goToStart" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="XZ7-SS-lCs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -886,17 +702,17 @@
     </scenes>
     <resources>
         <image name="arrow" width="150" height="140"/>
-        <image name="background" width="375" height="667"/>
-        <image name="cardBack1" width="300" height="305"/>
-        <image name="grayToScore" width="264" height="210"/>
+        <image name="background" width="375.5" height="667.5"/>
+        <image name="cardBack1" width="300" height="305.5"/>
         <image name="home" width="105" height="97"/>
-        <image name="lookingUp" width="300" height="305"/>
-        <image name="pipe1" width="646" height="175"/>
-        <image name="playAgain" width="99" height="98"/>
-        <image name="settings" width="104" height="97"/>
+        <image name="lookingUp" width="300" height="305.5"/>
+        <image name="settings" width="104.5" height="97"/>
         <image name="sound" width="102" height="97"/>
-        <image name="toiletBottom1" width="207" height="103"/>
-        <image name="toiletLid" width="207" height="103"/>
-        <image name="toiletTop" width="207" height="103"/>
+        <image name="toiletBottom1" width="207" height="103.33333587646484"/>
+        <image name="toiletLid" width="207" height="103.33333587646484"/>
+        <image name="toiletTop" width="207" height="103.33333587646484"/>
+        <systemColor name="lightTextColor">
+            <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

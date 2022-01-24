@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 
 
-enum audioName : String {
+enum AudioName : String {
     case flushToilet = "flush"
     case FlushToiletLong = "flushLong"
     case plop = "plop"
@@ -22,20 +22,16 @@ enum audioName : String {
 
 class AudioEffectPlayer {
     
-    
-    
     var audioPlayer : AVAudioPlayer?
     
-    init(soundName: audioName, volume: Float){
-        
+    init(soundName: AudioName, volume: Float){
         if let filePath = Bundle.main.url(forResource: soundName.rawValue, withExtension: "aif"){
-            
             do {
                 try audioPlayer = AVAudioPlayer(contentsOf: filePath as URL)
-                if volume <= 1 && volume > 0{
+                if volume <= 1 && volume > 0 {
                     audioPlayer?.volume = volume
                 }
-                else{
+                else {
                     audioPlayer?.volume = 1
                 }
                 audioPlayer?.prepareToPlay()
@@ -43,33 +39,22 @@ class AudioEffectPlayer {
             catch {
                 print(error)
             }
-            
-            
         }
-        
     }
     
-    
-    
-    
-    func playSound(){
-        
-        if soundEffectIsOn{
-            if let player = audioPlayer{
-                if player.isPlaying{
-                    player.currentTime = 0
-                    player.play()
-                }
-                else{
-                    player.play()
-                    
-                }
+    func playSound() {
+        guard soundEffectIsOn else { return }
+        if let player = audioPlayer {
+            if player.isPlaying {
+                player.currentTime = 0
+                player.play()
+            }
+            else{
+                player.play()
             }
         }
         
     }
-    
-    
 }
 
 

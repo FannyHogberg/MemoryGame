@@ -13,34 +13,20 @@ import Foundation
 class CardBank{
     
     var list = [Card]()
-    
-    
-    
-    
+
     init() {
-        
         for number in 1...12{
             list.append(Card(cardId: number, imageName: "card\(number)", soundName: "fart\(number)"))
             list.append(Card(cardId: number, imageName: "card\(number)", soundName: "fart\(number)"))
         }
-        
-        
     }
-    
-    
     
     //returns an Array of Cards in pairs in random order...
-    func createCardsToPlay(levelInGame: Level) -> [Card]{
-        
-        var listOfCardPair = getRandomDifferentCardPairs(numberOfPairs: levelInGame.pairOfCards)
-        
+    func createCards(amountOfPairs: Int) -> [Card] {
+        var listOfCardPair = getRandomDifferentCardPairs(numberOfPairs: amountOfPairs)
         listOfCardPair = shuffleCardsInArray(arrayToShuffle: listOfCardPair)
-        
         return listOfCardPair
     }
-    
-    
-    
     
     //Returns an array of different Card Objects. min: 1, max: cards in cardbank / 2
     func getRandomDifferentCardPairs(numberOfPairs: Int) -> [Card]{
@@ -60,94 +46,39 @@ class CardBank{
                 listOfRandomNumbers.append(randomNumber)
                 listOfCards.append(list[randomNumber])      //The first card.
                 listOfCards.append(list[randomNumber+1])    //The other equal card.
-                
             }
         }
         return listOfCards
     }
-    
-    
-    
+        
     //Shuffles the Cards in an array.
     func shuffleCardsInArray(arrayToShuffle: [Card]) -> [Card] {
         var cards = arrayToShuffle
-        
         let i = 4 //Mixing ratio
-        
         for _ in 0..<cards.count * i{
             let card = cards.remove(at: Int(arc4random_uniform(UInt32(cards.count))))
             cards.insert(card, at: Int(arc4random_uniform(UInt32(cards.count))))
         }
-        
         return cards
-        
+    }
+
+    var allFlippedCardsAreEqual: Bool {
+        let flippedCards = list.filter { $0.isFlipped }
+        guard flippedCards.count > 1 else { fatalError() }
+        guard let id = flippedCards.first?.id else { fatalError() }
+        return flippedCards.allSatisfy { $0.id == id }
+    }
+
+    var flippedCardsCount: Int {
+        list.filter { $0.isFlipped }.count
     }
     
-    
-    
-    
-    //Run this function when two cards are flipped
-    func checkIfDisplayedCardsAreEqual () -> Bool{
-        var cardIndex = [Int]()
-        
-        for i in 0...list.count-1{
-            if list[i].isFlipped{
-                cardIndex.append(i)
-            }
-        }
-        if list[cardIndex[0]].id == list[cardIndex[1]].id{
-            return true
-        }
-        return false
+    func unflipAllCards() {
+        list.forEach { $0.setIsFlippedToFalse() }
     }
     
-    
-    
-    
-    func countDisplayedCards() -> Int{
-        var counter = 0
-        for card in list{
-            if card.isFlipped{
-                counter += 1
-            }
-        }
-        return counter
-        
+    func resetAllCards() {
+        list.forEach { $0.resetCard() }
     }
-    
-    
-    
-    func didAnyCardFlippedMoreThanTwoTimes() -> Bool{
-        
-        for card in list{
-            if card.flippedCounter >= 3{
-                return true
-            }
-        }
-        return false
-    }
-    
-    
-    func setAllCardToBeNotFlipped(){
-        for card in list{
-            card.setIsFlippedToFalse()
-        }
-    }
-    
-    
-    func resetAllCards(){
-        for card in list{
-            card.resetCard()
-        }
-        
-        
-    }
-    
-    
-    
 }
-
-
-
-
 

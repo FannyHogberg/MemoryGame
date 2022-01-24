@@ -10,44 +10,41 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    private let offImage = UIImage(named: "noSound")
+    private let onImage = UIImage(named: "sound")
     
+    @IBOutlet private weak var musicButton: UIImageView! {
+        didSet {
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didPressMusicSetting))
+            musicButton.isUserInteractionEnabled = true
+            musicButton.addGestureRecognizer(tapGesture)
+            musicButton.image = backgroundMusicIsOn ? onImage : offImage
+        }
+    }
     
-    let offImage = UIImage(named: "noSound")
-    let onImage = UIImage(named: "sound")
-    
-    @IBOutlet weak var musicButton: UIImageView!
-    @IBOutlet weak var audioButton: UIImageView!
+    @IBOutlet private weak var audioButton: UIImageView!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         updateImages()
-        
     }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     func updateImages(){
+
         
-        if !backgroundMusicIsOn{
-            musicButton.image = offImage
-        }
-        
-        if !soundEffectIsOn{
+        if !soundEffectIsOn {
             audioButton.image = offImage
         }
         
     }
     
+    @objc
+    func didPressMusicSetting() {
+        
+    }
     
-    
-    @IBAction func settingsForMusic(_ sender: UITapGestureRecognizer) {
+    @IBAction func didPressMusicSettingsButton(_ sender: UITapGestureRecognizer) {
         
         
         if  backgroundMusicIsOn
@@ -70,42 +67,29 @@ class SettingsViewController: UIViewController {
     }
     
     
-    @IBAction func settingsForAudio(_ sender: UITapGestureRecognizer) {
-        
-        if soundEffectIsOn{
-            
+    @IBAction func didPressAudioSettingsButton(_ sender: UITapGestureRecognizer) {
+        if soundEffectIsOn {
             changeImage(imageview: audioButton, toImage: offImage)
             soundEffectIsOn = false
             saveSettingsFor(SoundEffects: soundEffectIsOn)
-
         }
-        else{
-            
-            
+        else {
             changeImage(imageview: audioButton, toImage: onImage)
             soundEffectIsOn = true
             saveSettingsFor(SoundEffects: soundEffectIsOn)
-            
         }
-        
     }
     
 
-    func changeImage(imageview: UIImageView, toImage : UIImage?){
+    func changeImage(imageview: UIImageView, toImage : UIImage?) {
         
         UIView.transition(with: imageview, duration: 0.5, options: .transitionCrossDissolve , animations: {
             imageview.image = toImage
-        }, completion: nil)
+        })
         
     }
-    
-    
-    
-    
+
     @IBAction func goToHomeScreen(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
-    
 }
